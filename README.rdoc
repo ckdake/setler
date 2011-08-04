@@ -1,0 +1,61 @@
+= Setler
+
+Setler is a Gem that lets one easily implement the "Feature Flags" pattern, or add settings to individual users. This is a cleanroom implementation of what the 'rails-settings' gem does. It's been forked all over the place, and my favorite version of it doesn't have any tests and doesn't work with settings associated with models.
+
+== Setup
+
+Install the gem by adding this to your Gemfile:
+
+  gem "setler", git: "git://github.com/ckdake/setler.git"
+  
+Generate the model:
+
+  rails g setler <model_name>
+  
+Run the migration:
+
+  rake db:migrate
+  
+== Usage
+
+Create/Update settings:
+
+  Featureflags.bacon_dispenser_enabled? = true
+  Settings.allowed_meats = ['bacon', 'crunchy bacon']
+  
+Read settings:
+
+  Featureflags.bacon_dispenser_enabled? # true
+  Settings.allowed_meats.include?('bacon')  # true
+  
+Destroy them:
+
+  Featureflags.destroy :bacon_dispenser_enabled
+  Settings.destroy :allowed_meats
+  
+List all:
+
+  Featureflags.all
+  Settings.all
+  
+Set defaults in an initializer with something like:
+
+  Featureflags.defaults[:bacon_dispenser_enabled?] = false
+  Settings.defaults[:allowed_meats] = ['itsnotbacon']
+  
+Add them to any ActiveRecord object:
+
+  class User < ActiveRecord::Base
+    has_setler as: :settings
+  end
+  
+Then you get:
+  
+  user = User.first
+  user.settings.favorite_meat = :bacon
+  user.settings.favorite_meat  # :bacon
+  user.settings.all # { "favorite_meat" => :bacon }
+  
+And look em up:
+
+  User.with_settings_for('favorite_meat') # => scope of users with the favorite_meat setting
