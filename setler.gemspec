@@ -8,8 +8,8 @@ Gem::Specification.new do |s|
   s.authors     = ["Chris Kelly"]
   s.email       = ["ckdake@ckdake.com"]
   s.homepage    = ""
-  s.summary     = %q{TODO: Write a gem summary}
-  s.description = %q{TODO: Write a gem description}
+  s.summary     = %q{Settler lets you use the 'Feature Flags' pettern or add settings to models.}
+  s.description = %q{Setler is a Gem that lets one easily implement the "Feature Flags" pattern, or add settings to individual models. This is a cleanroom implementation of what the 'rails-settings' gem does. It's been forked all over the place, and my favorite version of it doesn't have any tests and doesn't work with settings associated with models.}
 
   s.rubyforge_project = "setler"
 
