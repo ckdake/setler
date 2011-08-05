@@ -38,10 +38,9 @@ module Setler
     end
   end
   
-  class ActiveRecord
-    def self.has_setler(scopename = 'settings')
+  module ActiveRecord
+    def has_setler(scopename = 'settings')
       @@scopename = scopename
-      puts scopename
     end
   end
 end
