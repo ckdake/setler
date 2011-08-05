@@ -3,7 +3,6 @@ require 'pp'
 
 module Setler
   class Settings < ActiveRecord::Base
-    set_table_name 'settings'
     serialize :value
     
     cattr_accessor :defaults
