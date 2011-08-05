@@ -4,6 +4,7 @@ require 'pp'
 module Setler
   class Settings < ActiveRecord::Base
     serialize :value
+    self.abstract_class = true
     
     cattr_accessor :defaults
     @@defaults = {}.with_indifferent_access
@@ -15,15 +16,15 @@ module Setler
       
     rescue NoMethodError
       if method_name =~ /=$/
-        Settings.find_or_create_by_var(method_name.gsub('=', '')).update_attribute(:value, args.first)
+        self.find_or_create_by_var(method_name.gsub('=', '')).update_attribute(:value, args.first)
       else
-        Settings.find_by_var(method_name).try(:value) || @@defaults[method_name]
+        self.find_by_var(method_name).try(:value) || @@defaults[method_name]
       end
     end
     
     def self.destroy(var_name)
       var_name = var_name.to_s
-      if setting = Settings.find_by_var(var_name)
+      if setting = self.find_by_var(var_name)
         setting.destroy
       else
         raise SettingNotFound, "Setting variable \"#{var_name}\" not found"
