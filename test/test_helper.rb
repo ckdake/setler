@@ -1,3 +1,4 @@
+require 'cover_me'
 require 'rubygems'
 
 require 'bundler'
