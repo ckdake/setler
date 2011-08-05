@@ -1,5 +1,6 @@
 require File.join(File.dirname(__FILE__), 'setler', 'version')
-require 'pp'
+
+require 'setler/railtie.rb' if defined?(Rails)
 
 module Setler
   class Settings < ActiveRecord::Base
@@ -34,6 +35,13 @@ module Setler
     
     def self.all
       Hash[super.collect{ |s| [s.var, s.value] }].merge(@@defaults)
+    end
+  end
+  
+  class ActiveRecord
+    def self.has_setler(scopename = 'settings')
+      @@scopename = scopename
+      puts scopename
     end
   end
 end

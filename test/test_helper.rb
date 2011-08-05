@@ -12,14 +12,15 @@ end
 
 require 'active_record'
 require 'test/unit'
+require 'rails'
 
 require File.join(File.dirname(__FILE__), '..', 'lib', 'setler.rb')
 
 ActiveRecord::Base.establish_connection(:adapter => "sqlite3", :database => ":memory:")
 
-# class User < ActiveRecord::Base
-#   has_settings
-# end
+class User < ActiveRecord::Base
+  has_setler :preferences
+end
 
 def setup_db
   ActiveRecord::Schema.define(:version => 1) do
@@ -32,8 +33,8 @@ def setup_db
     end
     add_index :settings, [ :target_type, :target_id, :var ], :unique => true
     
-    # create_table :users do |t|
-    #   t.string :name
-    # end
+    create_table :users do |t|
+      t.string :name
+    end
   end
 end
