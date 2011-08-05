@@ -1,7 +1,5 @@
 = Setler
 
-THIS IS NOT READY FOR USE YET. IT DOESNT DO ANYTHING.
-
 Setler is a Gem that lets one easily implement the "Feature Flags" pattern, or add settings to individual models. This is a cleanroom implementation of what the 'rails-settings' gem does. It's been forked all over the place, and my favorite version of it doesn't have any tests and doesn't work with settings associated with models.
 
 == Setup
@@ -22,12 +20,12 @@ Run the migration:
 
 Create/Update settings:
 
-  Featureflags.bacon_dispenser_enabled? = true
+  Featureflags.bacon_dispenser_enabled = true
   Settings.allowed_meats = ['bacon', 'crunchy bacon']
   
 Read settings:
 
-  Featureflags.bacon_dispenser_enabled? # true
+  Featureflags.bacon_dispenser_enabled # true
   Settings.allowed_meats.include?('bacon')  # true
   
 Destroy them:
@@ -42,10 +40,10 @@ List all:
   
 Set defaults in an initializer with something like:
 
-  Featureflags.defaults[:bacon_dispenser_enabled?] = false
+  Featureflags.defaults[:bacon_dispenser_enabled] = false
   Settings.defaults[:allowed_meats] = ['itsnotbacon']
   
-Add them to any ActiveRecord object:
+COING SOON! Add them to any ActiveRecord object:
 
   class User < ActiveRecord::Base
     has_setler as: :settings

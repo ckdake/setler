@@ -26,6 +26,7 @@ module Setler
       var_name = var_name.to_s
       if setting = self.find_by_var(var_name)
         setting.destroy
+        true
       else
         raise SettingNotFound, "Setting variable \"#{var_name}\" not found"
       end
