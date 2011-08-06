@@ -63,4 +63,10 @@ class Setler::SettingsTest < Test::Unit::TestCase
     Setler::Settings.destroy :test
     assert_nil Setler::Settings.test
   end
+
+  def test_destroy_when_setting_does_not_exist
+    assert_raise Setler::SettingNotFound do
+      Setler::Settings.destroy :not_a_setting
+    end
+  end
 end
