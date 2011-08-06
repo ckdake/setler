@@ -13,7 +13,7 @@ end
 require 'active_record'
 require 'test/unit'
 
-require File.join(File.dirname(__FILE__), '..', 'lib', 'setler.rb')
+require_relative '../lib/setler'
 
 ActiveRecord::Base.establish_connection(:adapter => "sqlite3", :database => ":memory:")
 
