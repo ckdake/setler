@@ -7,15 +7,16 @@ module Setler
     @@defaults = {}.with_indifferent_access
     
     # Get and Set variables when the calling method is the variable name
-    def self.method_missing(method, *args)
-      method_name = method.to_s
-      super(method, *args)
-      
-    rescue NoMethodError
-      if method_name =~ /=$/
-        self.find_or_create_by_var(method_name.gsub('=', '')).update_attribute(:value, args.first)
+    def self.method_missing(method, *args, &block)
+      if respond_to?(method)
+        super(method, *args, &block)
       else
-        self.find_by_var(method_name).try(:value) || @@defaults[method_name]
+        method_name = method.to_s
+        if method_name.ends_with?("=")
+          self.find_or_create_by_var(method_name[0..-2]).update_attribute(:value, args.first)
+        else
+          self.find_by_var(method_name).try(:value) || @@defaults[method_name]
+        end
       end
     end
     
