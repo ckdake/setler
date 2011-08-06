@@ -12,7 +12,6 @@ end
 
 require 'active_record'
 require 'test/unit'
-require 'rails'
 
 require File.join(File.dirname(__FILE__), '..', 'lib', 'setler.rb')
 
