@@ -43,7 +43,7 @@ Set defaults in an initializer with something like:
   Featureflags.defaults[:bacon_dispenser_enabled] = false
   Settings.defaults[:allowed_meats] = ['itsnotbacon']
   
-COING SOON! Add them to any ActiveRecord object:
+Add them to any ActiveRecord object:
 
   class User < ActiveRecord::Base
     has_setler as: :settings
@@ -56,6 +56,6 @@ Then you get:
   user.settings.favorite_meat  # :bacon
   user.settings.all # { "favorite_meat" => :bacon }
   
-And look em up:
+TODO: And look em up:
 
   User.with_settings_for('favorite_meat') # => scope of users with the favorite_meat setting

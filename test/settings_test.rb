@@ -63,6 +63,32 @@ class Setler::SettingsTest < Test::Unit::TestCase
     Setler::Settings.destroy :test
     assert_nil Setler::Settings.test
   end
+  
+  def test_user_has_setler
+    user = User.create name: 'user 1'
+    assert_nil user.preferences.likes_bacon
+    user.preferences.likes_bacon = true
+    assert user.preferences.likes_bacon
+    user.preferences.destroy :likes_bacon
+    assert_nil user.preferences.likes_bacon
+  end
+  
+  def test_user_settings_all
+    user = User.create name: 'user 1'
+    assert_equal user.preferences.all, Setler::Settings.all
+    user.preferences.likes_bacon = true
+    user.preferences.really_likes_bacon = true
+    assert user.preferences.all['likes_bacon']
+    assert user.preferences.all['really_likes_bacon']
+  end
+  
+  # def test_user_has_settings_for
+  #   user1 = User.create name: 'awesome user'
+  #   user2 = User.create name: 'bad user'
+  #   user1.preferences.likes_bacon = true
+  #   assert_equal 1, User.with_settings_for('likes_bacon').count
+  #   assert_equal user1, User.with_settings_for('likes_bacon').first
+  # end
 
   def test_destroy_when_setting_does_not_exist
     assert_raise Setler::SettingNotFound do
