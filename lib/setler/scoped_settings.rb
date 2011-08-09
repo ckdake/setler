@@ -8,6 +8,6 @@ module Setler
     def self.thing_scoped
       Setler::Settings.where(thing_type: @object.class.base_class.to_s, thing_id: @object.id)
     end
- 
+    
   end
 end
