@@ -15,9 +15,9 @@ module Setler
       else
         method_name = method.to_s
         if method_name.ends_with?("=")
-          self.find_or_create_by_var(method_name[0..-2]).update_attribute(:value, args.first)
+          thing_scoped.find_or_create_by_var(method_name[0..-2]).update_attribute(:value, args.first)
         else
-          self.find_by_var(method_name).try(:value) || @@defaults[method_name]
+          thing_scoped.find_by_var(method_name).try(:value) || @@defaults[method_name]
         end
       end
     end
@@ -33,7 +33,11 @@ module Setler
     end
     
     def self.all
-      Hash[super.collect{ |s| [s.var, s.value] }].merge(@@defaults)
+      Hash[thing_scoped.all.collect{ |s| [s.var, s.value] }].merge(@@defaults)
+    end
+    
+    def self.thing_scoped
+      self.where(thing_type: nil, thing_id: nil)
     end
   end
   

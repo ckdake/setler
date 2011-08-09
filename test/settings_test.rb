@@ -74,12 +74,25 @@ class Setler::SettingsTest < Test::Unit::TestCase
   end
   
   def test_user_settings_all
+    Setler::Settings.destroy_all
     user = User.create name: 'user 1'
-    assert_equal user.preferences.all, Setler::Settings.all
+    assert_equal Setler::Settings.all, user.preferences.all
     user.preferences.likes_bacon = true
     user.preferences.really_likes_bacon = true
     assert user.preferences.all['likes_bacon']
+    assert !Setler::Settings.all['likes_bacon']
     assert user.preferences.all['really_likes_bacon']
+    assert !Setler::Settings.all['really_likes_bacon']
+  end
+  
+  def test_user_settings_override_defaults
+    Setler::Settings.defaults[:foo] = false
+    user = User.create name: 'user 1'
+    assert !user.preferences.foo
+    user.preferences.foo = true
+    assert user.preferences.foo
+    user.preferences.foo = false
+    assert !user.preferences.foo
   end
   
   # def test_user_has_settings_for
