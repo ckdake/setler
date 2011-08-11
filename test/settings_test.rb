@@ -31,9 +31,22 @@ class Setler::SettingsTest < Test::Unit::TestCase
     assert_equal 'bar', Setler::Settings.test2
   end
 
+  def test_get_with_array_syntax
+    assert_equal 'foo', Setler::Settings["test"]
+    assert_equal 'bar', Setler::Settings[:test2]
+  end
+
   def test_update
     Setler::Settings.test = '321'
     assert_equal '321', Setler::Settings.test
+  end
+
+  def test_update_with_array_syntax
+    Setler::Settings["test"] = '321'
+    assert_equal '321', Setler::Settings.test
+
+    Setler::Settings[:test] = '567'
+    assert_equal '567', Setler::Settings.test
   end
   
   def test_create
