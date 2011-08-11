@@ -15,26 +15,30 @@ module Setler
       else
         method_name = method.to_s
         if method_name.ends_with?("=")
-          # THIS IS BAD
-          # thing_scoped.find_or_create_by_var(method_name[0..-2]) should work but doesnt for some reason
-          # When @object is present, thing_scoped sets the where scope for the polymorphic association
-          # but the find_or_create_by wasn't using the thing_type and thing_id
-          thing_scoped.find_or_create_by_var_and_thing_type_and_thing_id(
-            method_name[0..-2],
-            @object.try(:class).try(:base_class).try(:to_s),
-            @object.try(:id)
-          ).update_attribute(:value, args.first)
+          self[method_name[0..-2]] = args.first
         else
-          the_setting = thing_scoped.find_by_var(method_name)
-          if the_setting.nil?
-            return @@defaults[method_name]
-          else
-            return the_setting.value
-          end
+          self[method_name]
         end
       end
     end
-    
+
+    def self.[](var)
+      the_setting = thing_scoped.find_by_var(var.to_s)
+      the_setting.try(:value) || @@defaults[var]
+    end
+
+    def self.[]=(var, value)
+      # THIS IS BAD
+      # thing_scoped.find_or_create_by_var(method_name[0..-2]) should work but doesnt for some reason
+      # When @object is present, thing_scoped sets the where scope for the polymorphic association
+      # but the find_or_create_by wasn't using the thing_type and thing_id
+      thing_scoped.find_or_create_by_var_and_thing_type_and_thing_id(
+        var.to_s,
+        @object.try(:class).try(:base_class).try(:to_s),
+        @object.try(:id)
+      ).update_attribute(:value, value)
+    end
+
     def self.destroy(var_name)
       var_name = var_name.to_s
       if setting = self.find_by_var(var_name)

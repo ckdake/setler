@@ -20,13 +20,14 @@ Run the migration:
 
 Create/Update settings:
 
+  # Method calls and []= are synonymous
   Featureflags.bacon_dispenser_enabled = true
-  Settings.allowed_meats = ['bacon', 'crunchy bacon']
+  Settings[:allowed_meats] = ['bacon', 'crunchy bacon']
   
 Read settings:
 
   Featureflags.bacon_dispenser_enabled # true
-  Settings.allowed_meats.include?('bacon')  # true
+  Settings[:allowed_meats].include?('bacon')  # true
   
 Destroy them:
 
