@@ -6,7 +6,7 @@ Setler is a Gem that lets one easily implement the "Feature Flags" pattern, or a
 
 Install the gem by adding this to your Gemfile:
 
-  gem "setler", git: "git://github.com/ckdake/setler.git"
+  gem "setler"
   
 Generate the model:
 
