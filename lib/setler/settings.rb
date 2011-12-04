@@ -3,8 +3,6 @@ module Setler
     serialize :value
     self.abstract_class = true
     
-    set_table_name 'settings'
-    
     cattr_accessor :defaults
     @@defaults = {}.with_indifferent_access
     
@@ -56,6 +54,7 @@ module Setler
     def self.thing_scoped
       self.where(thing_type: nil, thing_id: nil)
     end
+    
   end
   
 end
