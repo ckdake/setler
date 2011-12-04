@@ -23,7 +23,7 @@ class SetlerGenerator < Rails::Generators::NamedBase
   end
   
   def generate_model
-    template "model.rb", File.join("app/models",class_path,"#{file_name}.rb"), force: true
-    migration_template "migration.rb", "db/migrate/setler_create_#{table_name}.rb"
+    template "model.rb", File.join("app", "models", "#{file_name}.rb"), force: true
+    migration_template "migration.rb", File.join("db", "migrate", "create_#{table_name}.rb")
   end
 end
