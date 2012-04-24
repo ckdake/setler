@@ -41,7 +41,18 @@ class ::SettingsTest < Test::Unit::TestCase
     ::Settings.test = '321'
     assert_equal '321', ::Settings.test
   end
-  
+
+  def test_update_with_false
+    ::Settings.test = false
+    assert_equal false, ::Settings.test
+  end
+
+  def test_update_with_nil_and_default_not_nil
+    ::Settings.defaults[:foo] = :test
+    ::Settings.foo = nil
+    assert_equal nil, ::Settings.foo
+  end
+
   def test_update_with_array_syntax
     ::Settings["test"] = '321'
     assert_equal '321', ::Settings.test
@@ -77,7 +88,15 @@ class ::SettingsTest < Test::Unit::TestCase
     ::Settings.destroy :test
     assert_nil ::Settings.test
   end
-  
+
+  def test_destroy_reverts_to_default
+    ::Settings.defaults[:foo] = :test
+    ::Settings[:foo] = :bar
+
+    ::Settings.destroy :foo
+    assert_equal :test, ::Settings.foo
+  end
+
   def test_multiple_settings_classes
     ::Settings.testing = '123'
     assert_nil ::Preferences.testing

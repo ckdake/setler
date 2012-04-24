@@ -22,7 +22,7 @@ module Setler
 
     def self.[](var)
       the_setting = thing_scoped.find_by_var(var.to_s)
-      the_setting.try(:value) || @@defaults[var]
+      the_setting.present? ? the_setting.value : @@defaults[var]
     end
 
     def self.[]=(var, value)
