@@ -43,6 +43,9 @@ Set defaults in an initializer with something like:
 
   Featureflags.defaults[:bacon_dispenser_enabled] = false
   Settings.defaults[:allowed_meats] = ['itsnotbacon']
+
+To revert to the default after changing a setting, destroy it.
+Note: Updating the setting to nil or false no longer makes it the default setting (> 0.0.6), but changes the setting to nil or false.
   
 Add them to any ActiveRecord object:
 
