@@ -1,7 +1,7 @@
 module Setler
   class ScopedSettings < Settings
     def self.for_thing(object, scopename)
-      set_table_name scopename
+      self.table_name = scopename
       @object = object
       self
     end
