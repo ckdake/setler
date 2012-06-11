@@ -114,7 +114,7 @@ class ::SettingsTest < Test::Unit::TestCase
   def test_user_settings_all
     ::Settings.destroy_all
     user = User.create name: 'user 1'
-    assert_equal ::Settings.all, user.preferences.all
+    assert_equal ::Preferences.all, user.preferences.all
     user.preferences.likes_bacon = true
     user.preferences.really_likes_bacon = true
     assert user.preferences.all['likes_bacon']
@@ -145,5 +145,17 @@ class ::SettingsTest < Test::Unit::TestCase
     assert_raise Setler::SettingNotFound do
       ::Settings.destroy :not_a_setting
     end
+  end
+
+  def test_implementations_are_independent
+    ::Preferences.create(:var => 'test',  :value => 'preferences foo')
+    ::Preferences.create(:var => 'test2', :value => 'preferences bar')
+
+    assert_not_equal ::Settings.defaults, ::Preferences.defaults
+
+    assert_equal 'foo', ::Settings[:test]
+    assert_equal 'bar', ::Settings[:test2]
+    assert_equal 'preferences foo', ::Preferences[:test]
+    assert_equal 'preferences bar', ::Preferences[:test2]
   end
 end
