@@ -3,8 +3,9 @@ module Setler
     serialize :value
     self.abstract_class = true
     
-    cattr_accessor :defaults
-    @@defaults = {}.with_indifferent_access
+    def self.defaults
+      @defaults ||= {}.with_indifferent_access
+    end
     
     # Get and Set variables when the calling method is the variable name
     def self.method_missing(method, *args, &block)
@@ -22,7 +23,7 @@ module Setler
 
     def self.[](var)
       the_setting = thing_scoped.find_by_var(var.to_s)
-      the_setting.present? ? the_setting.value : @@defaults[var]
+      the_setting.present? ? the_setting.value : defaults[var]
     end
 
     def self.[]=(var, value)
@@ -48,7 +49,7 @@ module Setler
     end
     
     def self.all
-      @@defaults.merge(Hash[thing_scoped.all.collect{ |s| [s.var, s.value] }])
+      defaults.merge(Hash[thing_scoped.all.collect{ |s| [s.var, s.value] }])
     end
     
     def self.thing_scoped
