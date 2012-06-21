@@ -133,6 +133,12 @@ class ::SettingsTest < Test::Unit::TestCase
     assert !user.preferences.foo
   end
   
+  def test_user_preferences_has_defaults
+    ::Preferences.defaults[:foo] = true
+    user = User.create name: 'user 1'
+    assert user.preferences.foo
+  end
+  
   # def test_user_has_settings_for
   #   user1 = User.create name: 'awesome user'
   #   user2 = User.create name: 'bad user'
@@ -148,8 +154,8 @@ class ::SettingsTest < Test::Unit::TestCase
   end
 
   def test_implementations_are_independent
-    ::Preferences.create(:var => 'test',  :value => 'preferences foo')
-    ::Preferences.create(:var => 'test2', :value => 'preferences bar')
+    ::Preferences.create var: 'test',  value: 'preferences foo'
+    ::Preferences.create var: 'test2', value: 'preferences bar'
 
     assert_not_equal ::Settings.defaults, ::Preferences.defaults
 
