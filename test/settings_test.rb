@@ -114,7 +114,6 @@ class ::SettingsTest < Test::Unit::TestCase
   def test_user_settings_all
     ::Settings.destroy_all
     user = User.create name: 'user 1'
-    assert_equal ::Preferences.all, user.preferences.all
     user.preferences.likes_bacon = true
     user.preferences.really_likes_bacon = true
     assert user.preferences.all['likes_bacon']
@@ -134,8 +133,10 @@ class ::SettingsTest < Test::Unit::TestCase
   end
   
   def test_user_preferences_has_defaults
-    ::Preferences.defaults[:foo] = true
     user = User.create name: 'user 1'
+    assert_equal ::Preferences.all, user.preferences.all
+    ::Preferences.defaults[:foo] = true
+    assert_equal ::Preferences.all, user.preferences.all
     assert user.preferences.foo
   end
   
