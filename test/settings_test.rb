@@ -134,9 +134,9 @@ class ::SettingsTest < Test::Unit::TestCase
   
   def test_user_preferences_has_defaults
     user = User.create name: 'user 1'
-    assert_equal ::Preferences.all, user.preferences.all
-    ::Preferences.defaults[:foo] = true
-    assert_equal ::Preferences.all, user.preferences.all
+    assert_equal User.Preferences.all, user.preferences.all
+    User.Preferences.defaults[:foo] = true
+    assert_equal User.Preferences.all, user.preferences.all
     assert user.preferences.foo
   end
   
