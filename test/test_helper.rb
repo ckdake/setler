@@ -37,7 +37,7 @@ def setup_db
       t.timestamps
     end
     add_index :settings, [ :thing_type, :thing_id, :var ], :unique => true
-    
+
     create_table :preferences do |t|
       t.string :var, :null => false
       t.text   :value, :null => true
@@ -46,7 +46,7 @@ def setup_db
       t.timestamps
     end
     add_index :preferences, [ :thing_type, :thing_id, :var ], :unique => true
-    
+
     create_table :users do |t|
       t.string :name
     end
