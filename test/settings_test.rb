@@ -128,8 +128,8 @@ class ::SettingsTest < Test::Unit::TestCase
     assert user.preferences.foo == ::Preferences.defaults[:foo]
 
     user.preferences.foo = "override"
-    assert user.preferences.foo == "override"
-    assert user.preferences.foo != ::Preferences.defaults[:foo]
+    assert_equal user.preferences.foo, "override"
+    assert_not_equal user.preferences.foo, ::Preferences.defaults[:foo]
   end
 
   def test_user_preferences_has_defaults
@@ -168,12 +168,21 @@ class ::SettingsTest < Test::Unit::TestCase
   end
 
   def test_user_preferences_defaults_are_implementation_independent
-    user = User.create name: 'user 1'
-    assert_equal ::Preferences.all, user.preferences.all
+    ::Preferences.defaults[:foobar] = "pref"
+    ::Settings.defaults[:foobar] = "set"
 
-    ::Preferences.defaults[:foo] = "pref"
-    ::Settings.defaults[:foo] = "set"
-    assert_equal ::Preferences.all, user.preferences.all
-    assert user.preferences.foo == "pref"
+    user = User.create name: 'user 1'
+    assert_equal ::Preferences.foobar, user.preferences.foobar
+    assert_equal ::Settings.foobar, user.settings.foobar
+  end
+
+  def test_user_preferences_defaults_are_not_overridden_by_top_level_preferences
+    ::Preferences.defaults[:foobar] = "pref"
+
+    user = User.create name: 'user 1'
+    assert_equal ::Preferences.foobar, user.preferences.foobar
+
+    ::Preferences.foobar = "bazzle"
+    assert_equal user.preferences.foobar, "pref"
   end
 end
