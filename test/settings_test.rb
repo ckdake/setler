@@ -2,41 +2,41 @@ require 'test_helper'
 
 class ::SettingsTest < Test::Unit::TestCase
   setup_db
-  
+
   def setup
     ::Settings.create(:var => 'test',  :value => 'foo')
     ::Settings.create(:var => 'test2', :value => 'bar')
   end
-  
+
   def teardown
     ::Settings.delete_all
     ::Preferences.delete_all
   end
-  
+
   def test_defaults
     ::Settings.defaults[:foo] = 'default foo'
-    
+
     assert_equal 'default foo', ::Settings.foo
-    
+
     ::Settings.foo = 'bar'
     assert_equal 'bar', ::Settings.foo
   end
-  
+
   def tests_defaults_false
     ::Settings.defaults[:foo] = false
     assert_equal false, ::Settings.foo
   end
-  
+
   def test_get
     assert_equal 'foo', ::Settings.test
     assert_equal 'bar', ::Settings.test2
   end
-  
+
   def test_get_with_array_syntax
     assert_equal 'foo', ::Settings["test"]
     assert_equal 'bar', ::Settings[:test2]
   end
-  
+
   def test_update
     ::Settings.test = '321'
     assert_equal '321', ::Settings.test
@@ -56,33 +56,33 @@ class ::SettingsTest < Test::Unit::TestCase
   def test_update_with_array_syntax
     ::Settings["test"] = '321'
     assert_equal '321', ::Settings.test
-  
+
     ::Settings[:test] = '567'
     assert_equal '567', ::Settings.test
   end
-  
+
   def test_create
     ::Settings.onetwothree = '123'
     assert_equal '123', ::Settings.onetwothree
   end
-  
+
   def test_complex_serialization
     complex = [1, '2', {:three => true}]
     ::Settings.complex = complex
     assert_equal complex, ::Settings.complex
   end
-  
+
   def test_serialization_of_float
     ::Settings.float = 0.01
     ::Settings.reload
     assert_equal 0.01, ::Settings.float
     assert_equal 0.02, ::Settings.float * 2
   end
-  
+
   def test_all
     assert_equal({ "test2" => "bar", "test" => "foo" }, ::Settings.all)
   end
-  
+
   def test_destroy
     assert_not_nil ::Settings.test
     ::Settings.destroy :test
@@ -101,7 +101,7 @@ class ::SettingsTest < Test::Unit::TestCase
     ::Settings.testing = '123'
     assert_nil ::Preferences.testing
   end
-  
+
   def test_user_has_setler
     user = User.create name: 'user 1'
     assert_nil user.preferences.likes_bacon
@@ -110,7 +110,7 @@ class ::SettingsTest < Test::Unit::TestCase
     user.preferences.destroy :likes_bacon
     assert_nil user.preferences.likes_bacon
   end
-   
+
   def test_user_settings_all
     ::Settings.destroy_all
     user = User.create name: 'user 1'
@@ -121,25 +121,26 @@ class ::SettingsTest < Test::Unit::TestCase
     assert user.preferences.all['really_likes_bacon']
     assert !::Settings.all['really_likes_bacon']
   end
-  
+
   def test_user_settings_override_defaults
-    ::Settings.defaults[:foo] = false
+    ::Preferences.defaults[:foo] = "default"
     user = User.create name: 'user 1'
-    assert !user.preferences.foo
-    user.preferences.foo = true
-    assert user.preferences.foo
-    user.preferences.foo = false
-    assert !user.preferences.foo
+    assert user.preferences.foo == ::Preferences.defaults[:foo]
+
+    user.preferences.foo = "override"
+    assert user.preferences.foo == "override"
+    assert user.preferences.foo != ::Preferences.defaults[:foo]
   end
-  
+
   def test_user_preferences_has_defaults
     user = User.create name: 'user 1'
-    assert_equal User.Preferences.all, user.preferences.all
-    User.Preferences.defaults[:foo] = true
-    assert_equal User.Preferences.all, user.preferences.all
+    assert_equal ::Preferences.all, user.preferences.all
+
+    ::Preferences.defaults[:foo] = true
+    assert_equal ::Preferences.all, user.preferences.all
     assert user.preferences.foo
   end
-  
+
   # def test_user_has_settings_for
   #   user1 = User.create name: 'awesome user'
   #   user2 = User.create name: 'bad user'
@@ -164,5 +165,15 @@ class ::SettingsTest < Test::Unit::TestCase
     assert_equal 'bar', ::Settings[:test2]
     assert_equal 'preferences foo', ::Preferences[:test]
     assert_equal 'preferences bar', ::Preferences[:test2]
+  end
+
+  def test_user_preferences_defaults_are_implementation_independent
+    user = User.create name: 'user 1'
+    assert_equal ::Preferences.all, user.preferences.all
+
+    ::Preferences.defaults[:foo] = "pref"
+    ::Settings.defaults[:foo] = "set"
+    assert_equal ::Preferences.all, user.preferences.all
+    assert user.preferences.foo == "pref"
   end
 end
