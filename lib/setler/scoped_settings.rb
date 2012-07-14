@@ -2,6 +2,7 @@ module Setler
   class ScopedSettings < Settings
     def self.for_thing(object, scopename)
       self.table_name = scopename
+      @scoped = true
       @settings_class = scopename.to_s.camelize.constantize
       @object = object
       self

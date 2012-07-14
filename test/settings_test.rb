@@ -176,13 +176,19 @@ class ::SettingsTest < Test::Unit::TestCase
     assert_equal ::Settings.foobar, user.settings.foobar
   end
 
-  def test_user_preferences_defaults_are_not_overridden_by_top_level_preferences
-    ::Preferences.defaults[:foobar] = "pref"
+  def test_user_preferences_precedence
+    ::Preferences.defaults[:foobar] = "default_pref"
 
     user = User.create name: 'user 1'
-    assert_equal ::Preferences.foobar, user.preferences.foobar
+    assert_equal "default_pref", user.preferences.foobar
 
-    ::Preferences.foobar = "bazzle"
-    assert_equal user.preferences.foobar, "pref"
+    ::Preferences.foobar = "set_pref"
+    assert_equal "set_pref", user.preferences.foobar
+
+    user.preferences.foobar = "scoped_user_pref"
+    assert_equal "scoped_user_pref", user.preferences.foobar
+
+    other_user = User.create
+    assert_equal "set_pref", other_user.preferences.foobar
   end
 end

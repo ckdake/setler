@@ -1,6 +1,6 @@
 module Setler
   class Settings < ActiveRecord::Base
-    
+
     # Use a Class Instance Variable for defaults. This prevents bleed between different classes that use
     # Setler::Settings. We can't use a cattr_accessor style class variable (@@defaults) here because it
     # bleeds between classes, and we can't use a class variable here (def self.defaults; @defaults; end)
@@ -15,10 +15,10 @@ module Setler
       end
       attr_accessor :defaults
     end
-    
+
     serialize :value
     self.abstract_class = true
-    
+
     # Get and Set variables when the calling method is the variable name
     def self.method_missing(method, *args, &block)
       if respond_to?(method)
@@ -35,7 +35,16 @@ module Setler
 
     def self.[](var)
       the_setting = thing_scoped.find_by_var(var.to_s)
-      the_setting.present? ? the_setting.value : defaults[var]
+      if the_setting.present?
+        the_setting.value
+      else
+        if @scoped
+          the_setting = base_scope.find_by_var(var.to_s)
+          the_setting.present? ? the_setting.value : defaults[var]
+        else
+          defaults[var]
+        end
+      end
     end
 
     def self.[]=(var, value)
@@ -59,15 +68,18 @@ module Setler
         raise SettingNotFound, "Setting variable \"#{var_name}\" not found"
       end
     end
-    
+
     def self.all
       defaults.merge(Hash[thing_scoped.all.collect{ |s| [s.var, s.value] }])
     end
-    
+
     def self.thing_scoped
+      self.base_scope
+    end
+
+    def self.base_scope
       self.where(thing_type: nil, thing_id: nil)
     end
-    
   end
-  
+
 end
