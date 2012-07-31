@@ -2,10 +2,10 @@ module Setler
   class Settings < ActiveRecord::Base
     serialize :value
     self.abstract_class = true
-    
+
     cattr_accessor :defaults
     @@defaults = {}.with_indifferent_access
-    
+
     # Get and Set variables when the calling method is the variable name
     def self.method_missing(method, *args, &block)
       if respond_to?(method)
@@ -34,7 +34,7 @@ module Setler
         var.to_s,
         @object.try(:class).try(:base_class).try(:to_s),
         @object.try(:id)
-      ).update_attribute(:value, value)
+      ).update_attributes({ :value => value })
     end
 
     def self.destroy(var_name)
@@ -56,5 +56,4 @@ module Setler
     end
 
   end
-
 end
