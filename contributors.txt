@@ -4,3 +4,4 @@ Phil Ostler github.com/philostler
 Rachel Heaton github.com/rheaton
 Corey Innis github.com/coreyti
 Steven Harman github.com/stevenharman
+Chris Stefano github.com/virtualstaticvoid

@@ -1,1 +1,1 @@
-rvm 1.9.2@setler
+rvm --create 1.9.2@setler
