@@ -1,3 +1,5 @@
+require 'rails/version'
+
 module Setler
   class Settings < ActiveRecord::Base
     serialize :value
@@ -6,7 +8,7 @@ module Setler
     cattr_accessor :defaults
     @@defaults = {}.with_indifferent_access
 
-    attr_accessible :var, :value if respond_to?(:attr_accessible)
+    attr_accessible :var, :value if Rails::VERSION::MAJOR == 3
 
     # Get and Set variables when the calling method is the variable name
     def self.method_missing(method, *args, &block)
