@@ -34,10 +34,10 @@ Destroy them:
   Featureflags.destroy :bacon_dispenser_enabled
   Settings.destroy :allowed_meats
   
-List all:
+List all settings:
 
-  Featureflags.all
-  Settings.all
+  Featureflags.all_settings
+  Settings.all_settings
   
 Set defaults in an initializer with something like:
 
