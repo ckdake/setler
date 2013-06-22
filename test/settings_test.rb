@@ -79,8 +79,8 @@ class ::SettingsTest < Test::Unit::TestCase
     assert_equal 0.02, ::Settings.float * 2
   end
 
-  def test_all
-    assert_equal({ "test2" => "bar", "test" => "foo" }, ::Settings.all)
+  def test_all_settings
+    assert_equal({ "test2" => "bar", "test" => "foo" }, ::Settings.all_settings)
   end
 
   def test_destroy
@@ -114,13 +114,13 @@ class ::SettingsTest < Test::Unit::TestCase
   def test_user_settings_all
     ::Settings.destroy_all
     user = User.create name: 'user 1'
-    assert_equal ::Preferences.all, user.preferences.all
+    assert_equal ::Preferences.all_settings, user.preferences.all_settings
     user.preferences.likes_bacon = true
     user.preferences.really_likes_bacon = true
-    assert user.preferences.all['likes_bacon']
-    assert !::Settings.all['likes_bacon']
-    assert user.preferences.all['really_likes_bacon']
-    assert !::Settings.all['really_likes_bacon']
+    assert user.preferences.all_settings['likes_bacon']
+    assert !::Settings.all_settings['likes_bacon']
+    assert user.preferences.all_settings['really_likes_bacon']
+    assert !::Settings.all_settings['really_likes_bacon']
   end
 
   def test_user_settings_override_defaults

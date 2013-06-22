@@ -49,7 +49,7 @@ module Setler
       end
     end
 
-    def self.all
+    def self.all_settings
       @@defaults.merge(Hash[thing_scoped.all.collect{ |s| [s.var, s.value] }])
     end
 
