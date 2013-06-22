@@ -8,7 +8,14 @@ module Setler
     cattr_accessor :defaults
     @@defaults = {}.with_indifferent_access
 
-    attr_accessible :var, :value if Rails::VERSION::MAJOR == 3
+    if Rails::VERSION::MAJOR == 3
+      attr_accessible :var, :value
+
+      def self.all
+        warn '[DEPRECATED] Setler::Settings#all is deprecated. Please use #all_settings'
+        all_settings
+      end
+    end
 
     # Get and Set variables when the calling method is the variable name
     def self.method_missing(method, *args, &block)
