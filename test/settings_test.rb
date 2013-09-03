@@ -32,6 +32,13 @@ class ::SettingsTest < Test::Unit::TestCase
     assert_equal 'bar', ::Settings.test2
   end
 
+  def test_get_presence
+    ::Settings.truthy = [1,2,3]
+    ::Settings.falsy = []
+    assert_equal true, ::Settings.truthy?
+    assert_equal false, ::Settings.falsy?
+  end
+
   def test_get_with_array_syntax
     assert_equal 'foo', ::Settings["test"]
     assert_equal 'bar', ::Settings[:test2]

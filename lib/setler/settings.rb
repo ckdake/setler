@@ -16,6 +16,8 @@ module Setler
         method_name = method.to_s
         if method_name.ends_with?("=")
           self[method_name[0..-2]] = args.first
+        elsif method_name.ends_with?("?")
+          self[method_name[0..-2]].present?
         else
           self[method_name]
         end
