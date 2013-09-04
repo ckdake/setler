@@ -5,3 +5,5 @@ Rachel Heaton github.com/rheaton
 Corey Innis github.com/coreyti
 Steven Harman github.com/stevenharman
 Chris Stefano github.com/virtualstaticvoid
+Brian Stanwyck github.com/brianstanwyck
+Jay Hayes github.com/iamvery
