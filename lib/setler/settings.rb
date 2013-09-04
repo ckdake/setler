@@ -1,3 +1,5 @@
+require 'rails/version'
+
 module Setler
   class Settings < ActiveRecord::Base
     serialize :value
@@ -6,7 +8,14 @@ module Setler
     cattr_accessor :defaults
     @@defaults = {}.with_indifferent_access
 
-    attr_accessible :var, :value if respond_to?(:attr_accessible)
+    if Rails::VERSION::MAJOR == 3
+      attr_accessible :var, :value
+
+      def self.all
+        warn '[DEPRECATED] Setler::Settings#all is deprecated. Please use #all_settings'
+        all_settings
+      end
+    end
 
     # Get and Set variables when the calling method is the variable name
     def self.method_missing(method, *args, &block)
@@ -51,7 +60,7 @@ module Setler
       end
     end
 
-    def self.all
+    def self.all_settings
       @@defaults.merge(Hash[thing_scoped.all.collect{ |s| [s.var, s.value] }])
     end
 
