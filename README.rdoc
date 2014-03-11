@@ -50,7 +50,7 @@ Note: Updating the setting to nil or false no longer makes it the default settin
 Add them to any ActiveRecord object:
 
   class User < ActiveRecord::Base
-    has_setler as: :settings
+    has_setler  :settings
   end
   
 Then you get:
