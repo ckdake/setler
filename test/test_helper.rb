@@ -1,4 +1,3 @@
-require 'cover_me'
 require 'rubygems'
 
 require 'bundler'
@@ -11,7 +10,8 @@ rescue Bundler::BundlerError => e
 end
 
 require 'active_record'
-require 'test/unit'
+require 'minitest/autorun'
+require 'pry'
 
 require_relative '../lib/setler'
 

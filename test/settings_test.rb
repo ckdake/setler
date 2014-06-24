@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ::SettingsTest < Test::Unit::TestCase
+class ::SettingsTest < Minitest::Test
   setup_db
 
   def setup
@@ -84,7 +84,7 @@ class ::SettingsTest < Test::Unit::TestCase
   end
 
   def test_destroy
-    assert_not_nil ::Settings.test
+    refute_nil ::Settings.test
     ::Settings.destroy :test
     assert_nil ::Settings.test
   end
@@ -129,7 +129,7 @@ class ::SettingsTest < Test::Unit::TestCase
 
     user.preferences.foo = "override"
     assert_equal user.preferences.foo, "override"
-    assert_not_equal user.preferences.foo, ::Preferences.defaults[:foo]
+    refute_equal user.preferences.foo, ::Preferences.defaults[:foo]
   end
 
   def test_user_preferences_has_defaults
@@ -150,7 +150,7 @@ class ::SettingsTest < Test::Unit::TestCase
   # end
 
   def test_destroy_when_setting_does_not_exist
-    assert_raise Setler::SettingNotFound do
+    assert_raises Setler::SettingNotFound do
       ::Settings.destroy :not_a_setting
     end
   end
@@ -159,7 +159,7 @@ class ::SettingsTest < Test::Unit::TestCase
     ::Preferences.create var: 'test',  value: 'preferences foo'
     ::Preferences.create var: 'test2', value: 'preferences bar'
 
-    assert_not_equal ::Settings.defaults, ::Preferences.defaults
+    refute_equal ::Settings.defaults, ::Preferences.defaults
 
     assert_equal 'foo', ::Settings[:test]
     assert_equal 'bar', ::Settings[:test2]

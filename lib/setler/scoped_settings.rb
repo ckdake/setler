@@ -9,7 +9,7 @@ module Setler
     end
 
     def self.thing_scoped
-      self.base_class.where(thing_type: @object.class.base_class.to_s, thing_id: @object.id)
+      self.where(thing_type: @object.class.to_s, thing_id: @object.id)
     end
 
     def self.defaults
