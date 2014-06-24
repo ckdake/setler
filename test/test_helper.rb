@@ -1,4 +1,3 @@
-require 'cover_me'
 require 'rubygems'
 
 require 'bundler'
@@ -11,7 +10,8 @@ rescue Bundler::BundlerError => e
 end
 
 require 'active_record'
-require 'test/unit'
+require 'minitest/autorun'
+require 'pry'
 
 require_relative '../lib/setler'
 
@@ -19,6 +19,7 @@ ActiveRecord::Base.establish_connection(:adapter => "sqlite3", :database => ":me
 
 class User < ActiveRecord::Base
   has_setler :preferences
+  has_setler :settings
 end
 
 class Settings < Setler::Settings
@@ -37,7 +38,7 @@ def setup_db
       t.timestamps
     end
     add_index :settings, [ :thing_type, :thing_id, :var ], :unique => true
-    
+
     create_table :preferences do |t|
       t.string :var, :null => false
       t.text   :value, :null => true
@@ -46,7 +47,7 @@ def setup_db
       t.timestamps
     end
     add_index :preferences, [ :thing_type, :thing_id, :var ], :unique => true
-    
+
     create_table :users do |t|
       t.string :name
     end

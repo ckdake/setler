@@ -59,6 +59,12 @@ Then you get:
   user.settings.favorite_meat = :bacon
   user.settings.favorite_meat  # :bacon
   user.settings.all # { "favorite_meat" => :bacon }
+
+The values which take precedence in scoped settings:
+  1. user.settings.favorite_meat
+  2. Settings.favorite_meat
+  3. Settings.defaults[:favorite_meat]
+
   
 TODO: And look em up:
 
