@@ -174,4 +174,10 @@ class ::SettingsTest < Minitest::Test
     assert_equal 'preferences foo', ::Preferences[:test]
     assert_equal 'preferences bar', ::Preferences[:test2]
   end
+
+  def test_defaults_are_independent
+    ::Settings.defaults[:foo] = false
+
+    refute_equal ::Settings.defaults, ::Preferences.defaults
+  end
 end
