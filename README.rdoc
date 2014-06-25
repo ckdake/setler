@@ -18,6 +18,8 @@ Run the migration:
 
   rake db:migrate
 
+If you are using the `protected_attributes` gem you must add `attr_protected` to the top of you setler model.
+
 == Usage
 
 Create/Update settings:
