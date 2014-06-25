@@ -10,7 +10,10 @@ class ::SettingsTest < Minitest::Test
 
   def teardown
     ::Settings.delete_all
+    ::Settings.defaults = {}.with_indifferent_access
+
     ::Preferences.delete_all
+    ::Preferences.defaults = {}.with_indifferent_access
   end
 
   def test_defaults
@@ -164,7 +167,7 @@ class ::SettingsTest < Minitest::Test
     ::Preferences.create var: 'test',  value: 'preferences foo'
     ::Preferences.create var: 'test2', value: 'preferences bar'
 
-    refute_equal ::Settings.defaults, ::Preferences.defaults
+    refute_match ::Settings.all_settings, ::Preferences.all_settings
 
     assert_equal 'foo', ::Settings[:test]
     assert_equal 'bar', ::Settings[:test2]
