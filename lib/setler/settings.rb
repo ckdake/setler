@@ -43,10 +43,10 @@ module Setler
       # thing_scoped.find_or_create_by_var(method_name[0..-2]) should work but doesnt for some reason
       # When @object is present, thing_scoped sets the where scope for the polymorphic association
       # but the find_or_create_by wasn't using the thing_type and thing_id
-      thing_scoped.find_or_create_by_var_and_thing_type_and_thing_id(
-        var.to_s,
-        @object.try(:class).try(:base_class).try(:to_s),
-        @object.try(:id)
+      thing_scoped.find_or_create_by(
+        var: var.to_s,
+        thing_type: @object.try(:class).try(:base_class).try(:to_s),
+        thing_id: @object.try(:id)
       ).update_attributes({ :value => value })
     end
 

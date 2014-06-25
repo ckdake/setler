@@ -9,8 +9,9 @@ rescue Bundler::BundlerError => e
   exit e.status_code
 end
 
+require 'rails'
 require 'active_record'
-require 'test/unit'
+require 'minitest/autorun'
 
 require_relative '../lib/setler'
 
