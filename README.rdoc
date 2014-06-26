@@ -3,6 +3,7 @@
 Setler is a Gem that lets one easily implement the "Feature Flags" pattern, or add settings to individual models. This is a cleanroom implementation of what the 'rails-settings' gem does. It's been forked all over the place, and my favorite version of it doesn't have any tests and doesn't work with settings associated with models.
 
 {<img src="https://travis-ci.org/ckdake/setler.svg?branch=master" alt="Build Status" />}[https://travis-ci.org/ckdake/setler]
+{<img src="https://badge.fury.io/rb/setler.svg" alt="Gem Version" />}[http://badge.fury.io/rb/setler]
 
 == Setup
 
