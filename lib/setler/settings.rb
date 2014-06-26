@@ -5,8 +5,13 @@ module Setler
     serialize :value
     self.abstract_class = true
 
-    cattr_accessor :defaults
-    @@defaults = {}.with_indifferent_access
+    def self.defaults
+      @defaults ||= {}.with_indifferent_access
+    end
+
+    def self.defaults=(defaults)
+      @defaults = defaults.with_indifferent_access
+    end
 
     if Rails::VERSION::MAJOR == 3
       attr_accessible :var, :value
@@ -35,7 +40,7 @@ module Setler
 
     def self.[](var)
       the_setting = thing_scoped.find_by_var(var.to_s)
-      the_setting.present? ? the_setting.value : @@defaults[var]
+      the_setting.present? ? the_setting.value : defaults[var]
     end
 
     def self.[]=(var, value)
@@ -43,10 +48,10 @@ module Setler
       # thing_scoped.find_or_create_by_var(method_name[0..-2]) should work but doesnt for some reason
       # When @object is present, thing_scoped sets the where scope for the polymorphic association
       # but the find_or_create_by wasn't using the thing_type and thing_id
-      thing_scoped.find_or_create_by_var_and_thing_type_and_thing_id(
-        var.to_s,
-        @object.try(:class).try(:base_class).try(:to_s),
-        @object.try(:id)
+      thing_scoped.find_or_create_by(
+        var: var.to_s,
+        thing_type: @object.try(:class).try(:base_class).try(:to_s),
+        thing_id: @object.try(:id)
       ).update_attributes({ :value => value })
     end
 
@@ -61,7 +66,7 @@ module Setler
     end
 
     def self.all_settings
-      @@defaults.merge(Hash[thing_scoped.all.collect{ |s| [s.var, s.value] }])
+      defaults.merge(Hash[thing_scoped.all.collect{ |s| [s.var, s.value] }])
     end
 
     def self.thing_scoped
