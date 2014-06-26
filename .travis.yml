@@ -1,0 +1,9 @@
+rvm:
+  - 1.9.2
+cache: bundler
+before_script:
+  - cp ./config/database.yml.example ./config/database.yml
+script:
+  - bundle exec rake test
+notifications:
+  email: false
