@@ -1,5 +1,8 @@
 require 'rubygems'
 
+require 'simplecov'
+SimpleCov.start 'rails'
+
 require 'bundler'
 begin
   Bundler.setup(:default, :development)
