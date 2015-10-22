@@ -1,8 +1,10 @@
 rvm:
   - 1.9.3
   - 2.1.2
+  - 2.2.3
 cache: bundler
 script:
   - bundle exec rake test
 notifications:
   email: false
+sudo: false
