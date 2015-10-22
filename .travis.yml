@@ -2,6 +2,10 @@ rvm:
   - 1.9.3
   - 2.1.2
   - 2.2.3
+gemfile:
+  - gemfiles/rails_3.gemfile
+  - gemfiles/rails_4.gemfile
+  - gemfiles/rails_5.gemfile
 cache: bundler
 script:
   - bundle exec rake test
