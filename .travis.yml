@@ -7,7 +7,9 @@ gemfile:
   - gemfiles/rails_4.gemfile
   - gemfiles/rails_5.gemfile
 cache: bundler
-before_install: gem install appraisal
+before_install:
+  - gem install appraisal
+  - appraisal install
 script:
   - bundle exec appraisal rake test
 notifications:
