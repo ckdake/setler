@@ -1,6 +1,3 @@
-require "rubygems"
-require "bundler/setup"
-
 require 'rake'
 require 'rake/testtask'
 require 'bundler/gem_tasks'
@@ -11,6 +8,4 @@ Rake::TestTask.new(:test) do |test|
   test.verbose = true
 end
 
-if !ENV["APPRAISAL_INITIALIZED"] && !ENV["TRAVIS"]
-  task :default => :appraisal
-end
+task :default => [:test]
