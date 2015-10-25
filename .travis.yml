@@ -3,7 +3,7 @@ rvm:
   - 2.1.2
   - 2.2.3
 cache: bundler
-script: 
+script:
   - bundle exec rake test
 notifications:
   email: false
