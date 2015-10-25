@@ -8,7 +8,7 @@ gemfile:
   - gemfiles/rails_5.gemfile
 cache: bundler
 script:
-  - bundle exec appraisal rake test
+  - bundle exec appraisal rails_5 rake test
 notifications:
   email: false
 sudo: false
