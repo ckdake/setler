@@ -9,6 +9,6 @@ sudo: false
 script: 
  - bundle exec rake test
 env:
- - RAILS_VERSION="3.2.22
- - RAILS_VERSION="4.2.4
- - RAILS_VERSION="master
+ - RAILS_VERSION=3.2.22
+ - RAILS_VERSION=4.2.4
+ - RAILS_VERSION=master
