@@ -10,4 +10,6 @@ gemfile:
   - gemfiles/rails_3.gemfile
   - gemfiles/rails_4.gemfile
   - gemfiles/rails_5.gemfile
-script: "bundle exec appraisal rake test"
+script: 
+  - gem install bundler
+  - bundle exec appraisal rake test
