@@ -6,10 +6,9 @@ cache: bundler
 notifications:
   email: false
 sudo: false
-
 gemfile:
   - gemfiles/rails_3.gemfile
   - gemfiles/rails_4.gemfile
   - gemfiles/rails_5.gemfile
 before_script: "bundle exec appraisal install"
-script: "bundle exec rake appraisal test"
+script: "bundle exec appraisal rake test"
