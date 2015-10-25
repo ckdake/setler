@@ -9,7 +9,7 @@ gemfile:
 cache: bundler
 before_install:
   - gem install appraisal
-  - appraisal install
+  - bundle exec appraisal install
 script:
   - bundle exec appraisal rake test
 notifications:
