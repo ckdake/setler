@@ -3,11 +3,11 @@ rvm:
   - 2.1.2
   - 2.2.3
 cache: bundler
+script: 
+ - bundle exec rake test
 notifications:
   email: false
 sudo: false
-script: 
- - bundle exec rake test
 env:
  - RAILS_VERSION=3.2.22
  - RAILS_VERSION=4.2.4
