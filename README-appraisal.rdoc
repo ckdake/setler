@@ -1,0 +1,83 @@
+= Setler
+
+Setler is a Gem that lets one easily implement the "Feature Flags" pattern, or add settings to individual models. This is a cleanroom implementation of what the 'rails-settings' gem does. It's been forked all over the place, and my favorite version of it doesn't have any tests and doesn't work with settings associated with models.
+
+{<img src="https://travis-ci.org/ckdake/setler.svg?branch=master" alt="Build Status" />}[https://travis-ci.org/ckdake/setler]
+{<img src="https://badge.fury.io/rb/setler.svg" alt="Gem Version" />}[http://badge.fury.io/rb/setler]
+
+== Setup
+
+Install the gem by adding this to your Gemfile:
+
+  gem "setler"
+
+Generate the model:
+
+  rails g setler <model_name>
+
+Run the migration:
+
+  rake db:migrate
+
+If you are using the `protected_attributes` gem you must add `attr_protected` to the top of you setler model.
+
+== Usage
+
+Create/Update settings:
+
+  # Method calls and []= are synonymous
+  Featureflags.bacon_dispenser_enabled = true
+  Settings[:allowed_meats] = ['bacon', 'crunchy bacon']
+
+Read settings:
+
+  Featureflags.bacon_dispenser_enabled # true
+  Settings[:allowed_meats].include?('bacon')  # true
+
+Destroy them:
+
+  Featureflags.destroy :bacon_dispenser_enabled
+  Settings.destroy :allowed_meats
+
+List all settings:
+
+  Featureflags.all_settings
+  Settings.all_settings
+
+Set defaults in an initializer with something like:
+
+  Featureflags.defaults[:bacon_dispenser_enabled] = false
+  Settings.defaults[:allowed_meats] = ['itsnotbacon']
+
+To revert to the default after changing a setting, destroy it.
+Note: Updating the setting to nil or false no longer makes it the default setting (> 0.0.6), but changes the setting to nil or false.
+
+Add them to any ActiveRecord object:
+
+  class User < ActiveRecord::Base
+    has_setler  :settings
+  end
+
+Then you get:
+
+  user = User.first
+  user.settings.favorite_meat = :bacon
+  user.settings.favorite_meat  # :bacon
+  user.settings.all # { "favorite_meat" => :bacon }
+
+TODO: And look em up:
+
+  User.with_settings_for('favorite_meat') # => scope of users with the favorite_meat setting
+
+== Gem Development
+
+Getting started is pretty straightforward:
+
+  1. Check out the code:  `git clone git://github.com/ckdake/setler.git`
+  2. Bundle install:  `bundle install`
+  3. Run:  `appraisal install`  to generate the appraisal's gemfiles.
+  4. Run the tests for all supported releases in Appraisals file and make sure they all pass and code coverage is still the same:  `appraisal rake test`
+
+If you'd like to contribute code, make your changes and submit a pull request that includes appropriate tests
+
+For building the gem: `rake build` and to release a gem to github and Rubygems: `rake release`
