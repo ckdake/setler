@@ -75,6 +75,11 @@ Getting started is pretty straightforward:
 
   1. Check out the code:  `git clone git://github.com/ckdake/setler.git`
   2. Bundle install:  `bundle install`
+  3. Run the tests and make sure they all pass and code coverage is still the same:  `rake test`
+
+Coming Soon - Using appraisal gem:
+  1. Check out the code:  `git clone git://github.com/ckdake/setler.git`
+  2. Bundle install:  `bundle install`
   3. Run:  `appraisal install`  to generate the appraisal's gemfiles.
   4. Run the tests for all supported releases in Appraisals file and make sure they all pass and code coverage is still the same:  `appraisal rake test`
 
