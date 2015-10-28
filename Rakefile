@@ -1,5 +1,5 @@
-require "rubygems"
-require "bundler/setup"
+require 'rubygems'
+require 'bundler/setup'
 
 require 'rake'
 require 'rake/testtask'
