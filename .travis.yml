@@ -3,8 +3,18 @@ rvm:
   - 2.1.2
   - 2.2.3
 cache: bundler
-script:
-  - bundle exec rake test
+script: "bundle exec rake test"
 notifications:
   email: false
 sudo: false
+gemfile:
+  - gemfiles/rails_3.gemfile
+  - gemfiles/rails_4.gemfile
+  - gemfiles/rails_5.gemfile
+matrix:
+  fast_finish: true
+  exclude:
+    - rvm: 1.9.3
+      gemfile: gemfiles/rails_5.gemfile
+    - rvm: 2.1.2
+      gemfile: gemfiles/rails_5.gemfile
