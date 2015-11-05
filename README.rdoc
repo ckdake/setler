@@ -5,6 +5,8 @@ Setler is a Gem that lets one easily implement the "Feature Flags" pattern, or a
 {<img src="https://travis-ci.org/ckdake/setler.svg?branch=master" alt="Build Status" />}[https://travis-ci.org/ckdake/setler]
 {<img src="https://badge.fury.io/rb/setler.svg" alt="Gem Version" />}[http://badge.fury.io/rb/setler]
 
+While Setler enables you to create both app-level and model-level settings, they are two separate things and don't mix. For example, if you create defaults for the app, they won't appear as defaults for individual models.
+
 == Setup
 
 Install the gem by adding this to your Gemfile:
