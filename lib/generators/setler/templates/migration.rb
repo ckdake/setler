@@ -9,6 +9,7 @@ class SetlerCreate<%= table_name.camelize %> < ActiveRecord::Migration
     end
 
     add_index :<%= table_name %>, [ :thing_type, :thing_id, :var ], unique: true
+    add_index :<%= table_name %>, :var, unique: true, where: "thing_id IS NULL AND thing_type is NULL"
   end
 
   def self.down
