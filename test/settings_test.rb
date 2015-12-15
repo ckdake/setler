@@ -80,8 +80,11 @@ class ::SettingsTest < Minitest::Test
     s1 = Settings.new var: :conflict, value: 1
     s2 = Settings.new var: :conflict, value: 2
     s1.save!
-    assert_raises ActiveRecord::RecordNotUnique do
-      s2.save!
+    exc = assert_raises ActiveRecord::RecordNotUnique, ActiveRecord::StatementInvalid do
+        s2.save!
+    end
+    if exc.is_a? ActiveRecord::StatementInvalid
+      assert exc.message.match(/UNIQUE/)
     end
   end
 
