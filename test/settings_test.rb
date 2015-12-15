@@ -76,6 +76,15 @@ class ::SettingsTest < Minitest::Test
     assert_equal '123', ::Settings.onetwothree
   end
 
+  def test_multithreaded_create
+    s1 = Settings.new var: :conflict, value: 1
+    s2 = Settings.new var: :conflict, value: 2
+    s1.save!
+    assert_raises ActiveRecord::RecordNotUnique do
+      s2.save!
+    end
+  end
+
   def test_complex_serialization
     complex = [1, '2', {:three => true}]
     ::Settings.complex = complex

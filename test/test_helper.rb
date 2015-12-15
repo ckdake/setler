@@ -40,6 +40,7 @@ def setup_db
       t.timestamps null: false
     end
     add_index :settings, [ :thing_type, :thing_id, :var ], :unique => true
+    add_index :settings, :var, unique: true, where: "thing_id IS NULL AND thing_type is NULL"
 
     create_table :preferences do |t|
       t.string :var, :null => false
@@ -49,6 +50,7 @@ def setup_db
       t.timestamps null: false
     end
     add_index :preferences, [ :thing_type, :thing_id, :var ], :unique => true
+    add_index :preferences, :var, unique: true, where: "thing_id IS NULL AND thing_type is NULL"
 
     create_table :users do |t|
       t.string :name
