@@ -83,7 +83,7 @@ class ::SettingsTest < Minitest::Test
     exc = assert_raises ActiveRecord::RecordNotUnique, ActiveRecord::StatementInvalid do
         s2.save!
     end
-    if exc.is_a? ActiveRecord::StatementInvalid
+    unless exc.is_a?(ActiveRecord::RecordNotUnique)
       assert exc.message.match(/UNIQUE/)
     end
   end
