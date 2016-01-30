@@ -4,6 +4,3 @@ coverage.data
 .bundle
 Gemfile.lock
 pkg/*
-# Added so not to force others to use .rvmrc and .overcommit.yml files.
-.rvmrc
-.overcommit.yml
