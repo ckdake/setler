@@ -8,6 +8,4 @@ end
 
 appraise "rails-5" do
   gem 'rails', github: 'rails/rails'
-  gem 'rack',  github: 'rack/rack'
-  gem 'arel',  github: 'rails/arel'
 end
