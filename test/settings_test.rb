@@ -89,7 +89,7 @@ class ::SettingsTest < Minitest::Test
   end
 
   def test_complex_serialization
-    complex = [1, '2', {:three => true}]
+    complex = [1, '2', {"three" => true}]
     ::Settings.complex = complex
     assert_equal complex, ::Settings.complex
   end

@@ -1,6 +1,6 @@
 GIT
-  remote: git://github.com/rails/rails.git
-  revision: 88ff3f820aa88b7235b7554668f91a73532726af
+  remote: https://github.com/rails/rails
+  revision: 5b37c9c4a6d823ea210e46ad5f57b1a437243e7d
   specs:
     actioncable (5.1.0.alpha)
       actionpack (= 5.1.0.alpha)
@@ -72,9 +72,9 @@ GEM
       bundler
       rake
       thor (>= 0.14.0)
-    arel (7.1.2)
+    arel (7.1.4)
     builder (3.2.2)
-    concurrent-ruby (1.0.2)
+    concurrent-ruby (1.0.3)
     docile (1.1.5)
     erubis (2.7.0)
     globalid (0.3.7)
@@ -92,10 +92,8 @@ GEM
     mini_portile2 (2.1.0)
     minitest (5.9.0)
     nio4r (1.2.1)
-    nokogiri (1.6.8)
+    nokogiri (1.6.8.1)
       mini_portile2 (~> 2.1.0)
-      pkg-config (~> 1.1.7)
-    pkg-config (1.1.7)
     rack (2.0.1)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -139,4 +137,4 @@ DEPENDENCIES
   sqlite3
 
 BUNDLED WITH
-   1.13.1
+   1.13.6
