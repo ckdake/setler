@@ -1,5 +1,5 @@
 PATH
-  remote: ../
+  remote: ..
   specs:
     setler (0.0.13)
       activerecord (>= 3.0.0)
@@ -110,4 +110,4 @@ DEPENDENCIES
   sqlite3
 
 BUNDLED WITH
-   1.13.1
+   1.14.0

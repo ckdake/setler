@@ -59,7 +59,7 @@ GIT
       thor (>= 0.18.1, < 2.0)
 
 PATH
-  remote: ../
+  remote: ..
   specs:
     setler (0.0.13)
       activerecord (>= 3.0.0)
@@ -137,4 +137,4 @@ DEPENDENCIES
   sqlite3
 
 BUNDLED WITH
-   1.13.6
+   1.14.0
