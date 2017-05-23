@@ -60,7 +60,7 @@ class ::SettingsTest < Minitest::Test
   def test_update_with_nil_and_default_not_nil
     ::Settings.defaults[:foo] = :test
     ::Settings.foo = nil
-    assert_equal nil, ::Settings.foo
+    assert_nil ::Settings.foo
   end
 
   def test_update_with_array_syntax
