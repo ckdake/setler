@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/rails/rails
-  revision: 589adea81c2f6ff04178a09986a455f6b7062dcc
+  revision: 36a301a90aaea213caa54cf3825d3fc9b345c04e
   specs:
     actioncable (5.2.0.alpha)
       actionpack (= 5.2.0.alpha)
@@ -90,7 +90,7 @@ GEM
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
     mini_portile2 (2.2.0)
-    minitest (5.10.2)
+    minitest (5.10.3)
     nio4r (2.1.0)
     nokogiri (1.8.0)
       mini_portile2 (~> 2.2.0)
@@ -137,4 +137,4 @@ DEPENDENCIES
   sqlite3
 
 BUNDLED WITH
-   1.15.2
+   1.15.3

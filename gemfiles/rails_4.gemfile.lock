@@ -63,7 +63,7 @@ GEM
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
     mini_portile2 (2.2.0)
-    minitest (5.10.2)
+    minitest (5.10.3)
     nokogiri (1.8.0)
       mini_portile2 (~> 2.2.0)
     rack (1.6.5)
@@ -125,4 +125,4 @@ DEPENDENCIES
   sqlite3
 
 BUNDLED WITH
-   1.15.2
+   1.15.3
