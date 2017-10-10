@@ -1,8 +1,8 @@
 rvm:
   - 1.9.3
-  - 2.1.8
-  - 2.2.4
-  - 2.3.0
+  - 2.1.10
+  - 2.2.8
+  - 2.3.5
 cache: bundler
 script: "bundle exec rake test"
 notifications:
@@ -12,10 +12,17 @@ gemfile:
   - gemfiles/rails_3.gemfile
   - gemfiles/rails_4.gemfile
   - gemfiles/rails_5.gemfile
+  - gemfiles/rails_5_edge.gemfile
 matrix:
   fast_finish: true
   exclude:
     - rvm: 1.9.3
+      gemfile: gemfiles/rails_4.gemfile
+    - rvm: 1.9.3
       gemfile: gemfiles/rails_5.gemfile
-    - rvm: 2.1.8
+    - rvm: 1.9.3
+      gemfile: gemfiles/rails_5_edge.gemfile
+    - rvm: 2.1.10
       gemfile: gemfiles/rails_5.gemfile
+    - rvm: 2.1.10
+      gemfile: gemfiles/rails_5_edge.gemfile

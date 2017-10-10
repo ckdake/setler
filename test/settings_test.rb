@@ -60,7 +60,7 @@ class ::SettingsTest < Minitest::Test
   def test_update_with_nil_and_default_not_nil
     ::Settings.defaults[:foo] = :test
     ::Settings.foo = nil
-    assert_equal nil, ::Settings.foo
+    assert_nil ::Settings.foo
   end
 
   def test_update_with_array_syntax
@@ -89,7 +89,7 @@ class ::SettingsTest < Minitest::Test
   end
 
   def test_complex_serialization
-    complex = [1, '2', {:three => true}]
+    complex = [1, '2', {"three" => true}]
     ::Settings.complex = complex
     assert_equal complex, ::Settings.complex
   end
