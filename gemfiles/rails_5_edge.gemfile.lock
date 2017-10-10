@@ -1,12 +1,12 @@
 GIT
   remote: https://github.com/rails/arel
-  revision: 1ede2ad3c7ae41ed1e06a92358b37c880dea9837
+  revision: 5cc7e774bb4d2190236cdbf46d66c89507ac6933
   specs:
     arel (9.0.0.alpha)
 
 GIT
   remote: https://github.com/rails/rails
-  revision: b4dfc18d67ed9302fed8d680dfcb433b67a011eb
+  revision: b205ea2dc6c70b2b8e2134640e3056ed33fdc6be
   specs:
     actioncable (5.2.0.alpha)
       actionpack (= 5.2.0.alpha)
@@ -86,7 +86,7 @@ GEM
     concurrent-ruby (1.0.5)
     crass (1.0.2)
     docile (1.1.5)
-    erubi (1.6.1)
+    erubi (1.7.0)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
     i18n (0.8.6)
