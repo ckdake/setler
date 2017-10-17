@@ -83,4 +83,3 @@ Getting started is pretty straightforward:
 If you'd like to contribute code, make your changes and submit a pull request that includes appropriate tests
 
 For building the gem: `rake build` and to release a gem to github and Rubygems: `rake release`
-
