@@ -1,5 +1,6 @@
 appraise "rails-3" do
   gem "rails", "3.2.22.5"
+  gem 'arel', "7.1.4" # LOCKED DOWN
 end
 
 appraise "rails-4" do
