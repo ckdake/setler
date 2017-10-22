@@ -1,0 +1,4 @@
+cd ../setler/
+appraisal clean
+appraisal install
+rake
