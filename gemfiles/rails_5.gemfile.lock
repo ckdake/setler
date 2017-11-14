@@ -52,7 +52,7 @@ GEM
     arel (7.1.4)
     builder (3.2.3)
     concurrent-ruby (1.0.5)
-    crass (1.0.2)
+    crass (1.0.3)
     docile (1.1.5)
     erubis (2.7.0)
     globalid (0.4.1)
