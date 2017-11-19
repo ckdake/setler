@@ -100,7 +100,7 @@ GEM
     nokogiri (1.8.1)
       mini_portile2 (~> 2.3.0)
     rack (2.0.3)
-    rack-test (0.7.0)
+    rack-test (0.7.1)
       rack (>= 1.0, < 3)
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
