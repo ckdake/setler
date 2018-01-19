@@ -1,11 +1,11 @@
 GIT
   remote: https://github.com/rails/rails
-  revision: 51c5bcbb39777b3861a44042a598bfb07d4e1fc1
+  revision: 6d1dd1643dc8a2dece837af331a4c5d26ac04f30
   specs:
     actioncable (5.2.0.beta2)
       actionpack (= 5.2.0.beta2)
       nio4r (~> 2.0)
-      websocket-driver (~> 0.6.1)
+      websocket-driver (>= 0.6.1)
     actionmailer (5.2.0.beta2)
       actionpack (= 5.2.0.beta2)
       actionview (= 5.2.0.beta2)
@@ -129,7 +129,7 @@ GEM
     thread_safe (0.3.6)
     tzinfo (1.2.4)
       thread_safe (~> 0.1)
-    websocket-driver (0.6.5)
+    websocket-driver (0.7.0)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.3)
 
