@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/rails/rails
-  revision: 8baca31dbe522cb407f0b3b8c8d3d4a6804e5aed
+  revision: a5b3d5bf4345e7c51aae5a181beabe8dc1c28955
   specs:
     actioncable (5.2.0.beta2)
       actionpack (= 5.2.0.beta2)
@@ -99,7 +99,7 @@ GEM
     mimemagic (0.3.2)
     mini_mime (1.0.0)
     mini_portile2 (2.3.0)
-    minitest (5.11.2)
+    minitest (5.11.3)
     nio4r (2.2.0)
     nokogiri (1.8.1)
       mini_portile2 (~> 2.3.0)
