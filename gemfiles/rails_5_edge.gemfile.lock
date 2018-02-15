@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/rails/rails
-  revision: 79aa6158b8d56a4df3099bc111e0a12c24763f22
+  revision: 4865f6b58965078e314a22fdcefdf57ee56675b1
   specs:
     actioncable (6.0.0.alpha)
       actionpack (= 6.0.0.alpha)
@@ -40,7 +40,7 @@ GIT
       marcel (~> 0.3.1)
     activesupport (6.0.0.alpha)
       concurrent-ruby (~> 1.0, >= 1.0.2)
-      i18n (~> 1.0)
+      i18n (>= 0.7, < 2)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
     rails (6.0.0.alpha)
