@@ -53,13 +53,13 @@ module Setler
           var.to_s,
           @object.try(:class).try(:base_class).try(:to_s),
           @object.try(:id)
-        ).update_attributes({ :value => value })
+        ).update({ :value => value })
       else
         thing_scoped.find_or_create_by(
           var: var.to_s,
           thing_type: @object.try(:class).try(:base_class).try(:to_s),
           thing_id: @object.try(:id)
-        ).update_attributes({ :value => value })
+        ).update({ :value => value })
       end
     end
 
