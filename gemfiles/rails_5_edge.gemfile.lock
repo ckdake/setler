@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/rails/rails
-  revision: ef73318e29666786feb00e9e9b3b49a771bb0b73
+  revision: 538463bce782e58ea72d130315cc510dab50777d
   specs:
     actioncable (6.0.0.alpha)
       actionpack (= 6.0.0.alpha)
@@ -88,7 +88,7 @@ GEM
     i18n (1.0.0)
       concurrent-ruby (~> 1.0)
     json (2.1.0)
-    loofah (2.2.0)
+    loofah (2.2.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.0)
