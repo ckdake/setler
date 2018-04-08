@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/rails/rails
-  revision: 8a2f4a212ac5b68cc37050f56a50cae689259920
+  revision: d729bc748811339c7e536f4ca98e91801e14c6f4
   specs:
     actioncable (6.0.0.alpha)
       actionpack (= 6.0.0.alpha)
@@ -80,7 +80,7 @@ GEM
     arel (9.0.0)
     builder (3.2.3)
     concurrent-ruby (1.0.5)
-    crass (1.0.3)
+    crass (1.0.4)
     docile (1.3.0)
     erubi (1.7.1)
     globalid (0.4.1)
