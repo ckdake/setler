@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/rails/rails
-  revision: d3c73ae5e4ebabdf6c79e490fddb2cbfb0de3b76
+  revision: d7445bc56f4eec8e19033f79be77aceb496fc31c
   specs:
     actioncable (6.0.0.alpha)
       actionpack (= 6.0.0.alpha)
@@ -91,7 +91,7 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.7.0)
       mini_mime (>= 0.1.1)
-    marcel (0.3.2)
+    marcel (0.3.3)
       mimemagic (~> 0.3.2)
     method_source (0.9.0)
     mimemagic (0.3.2)
