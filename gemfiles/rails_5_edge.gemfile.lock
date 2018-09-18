@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/rails/rails
-  revision: e925cb4d856088a815bf4a0cf27518d01bb4029d
+  revision: 1b90f614b1b3d06b7f02a8b9ea6cd84f15d58643
   specs:
     actioncable (6.0.0.alpha)
       actionpack (= 6.0.0.alpha)
@@ -144,4 +144,4 @@ DEPENDENCIES
   sqlite3
 
 BUNDLED WITH
-   1.16.4
+   1.16.5
