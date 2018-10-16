@@ -60,12 +60,12 @@ GEM
     loofah (2.2.2)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
-    mail (2.7.0)
+    mail (2.7.1)
       mini_mime (>= 0.1.1)
     mini_mime (1.0.1)
     mini_portile2 (2.3.0)
     minitest (5.11.3)
-    nokogiri (1.8.4)
+    nokogiri (1.8.5)
       mini_portile2 (~> 2.3.0)
     rack (1.6.10)
     rack-test (0.6.3)
@@ -126,4 +126,4 @@ DEPENDENCIES
   sqlite3
 
 BUNDLED WITH
-   1.17.0.pre.1
+   1.17.0.pre.2
