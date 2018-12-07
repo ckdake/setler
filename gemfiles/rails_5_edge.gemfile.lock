@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/rails/rails
-  revision: b86f65a816546ff8eea39d25b62c995c7efc21dc
+  revision: de06d7673eb81fd5d6090e567335daf598790680
   specs:
     actioncable (6.0.0.alpha)
       actionpack (= 6.0.0.alpha)
@@ -60,7 +60,7 @@ GIT
       activesupport (= 6.0.0.alpha)
       method_source
       rake (>= 0.8.7)
-      thor (>= 0.19.0, < 2.0)
+      thor (>= 0.20.3, < 2.0)
 
 PATH
   remote: ..
@@ -109,7 +109,7 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.0.4)
       loofah (~> 2.2, >= 2.2.2)
-    rake (12.3.1)
+    rake (12.3.2)
     simplecov (0.16.1)
       docile (~> 1.1)
       json (>= 1.8, < 3)
