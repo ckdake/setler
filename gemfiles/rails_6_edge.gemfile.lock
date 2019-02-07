@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/rails/rails
-  revision: 84ff78be7a021b26fd8484c68065f5d464629745
+  revision: b67d5c6dedbf033515a96a95d24d085bf99a0d07
   specs:
     actioncable (6.0.0.beta1)
       actionpack (= 6.0.0.beta1)
@@ -156,7 +156,7 @@ DEPENDENCIES
   rake
   setler!
   simplecov
-  sqlite3
+  sqlite3 (= 1.3.13)
 
 BUNDLED WITH
    1.17.3
