@@ -1,9 +1,9 @@
 appraise "rails-4" do
-  gem "rails", "4.2.10"
+  gem "rails", "4.2.11.1"
 end
 
 appraise "rails-5" do
-  gem "rails", "5.2.2"
+  gem "rails", "5.2.2.1"
 end
 
 appraise "rails-6-edge" do
