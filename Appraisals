@@ -1,11 +1,11 @@
 appraise "rails-4" do
-  gem "rails", "4.2.10"
+  gem "rails", "4.2.11.1"
 end
 
 appraise "rails-5" do
-  gem "rails", "5.0.7"
+  gem "rails", "5.2.2.1"
 end
 
-appraise "rails-5-edge" do
+appraise "rails-6-edge" do
   gem 'rails', git: 'https://github.com/rails/rails'
 end
