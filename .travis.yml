@@ -1,7 +1,7 @@
 language: ruby
 rvm:
-  - 2.3.7
-  - 2.4.4
+  - 2.3.8
+  - 2.4.6
   - 2.5.5
   - 2.6.2
 before_install: "gem install bundler:1.17.2"
@@ -17,7 +17,7 @@ gemfile:
 matrix:
   fast_finish: true
   exclude:
-    - rvm: 2.3.7
+    - rvm: 2.3.8
       gemfile: gemfiles/rails_6_edge.gemfile
-    - rvm: 2.4.4
+    - rvm: 2.4.6
       gemfile: gemfiles/rails_6_edge.gemfile
