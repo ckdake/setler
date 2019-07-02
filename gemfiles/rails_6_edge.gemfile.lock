@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/rails/rails
-  revision: 72e257b4c935b6829f7d4db36dea61a1682aa44e
+  revision: 41503f3d08418fb2dfe0eb85ac797059d9590051
   specs:
     actioncable (6.1.0.alpha)
       actionpack (= 6.1.0.alpha)
@@ -127,7 +127,7 @@ GEM
     rails-html-sanitizer (1.0.4)
       loofah (~> 2.2, >= 2.2.2)
     rake (12.3.2)
-    simplecov (0.16.1)
+    simplecov (0.17.0)
       docile (~> 1.1)
       json (>= 1.8, < 3)
       simplecov-html (~> 0.10.0)
