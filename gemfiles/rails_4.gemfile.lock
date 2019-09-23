@@ -64,7 +64,7 @@ GEM
       mini_mime (>= 0.1.1)
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
-    minitest (5.11.3)
+    minitest (5.12.0)
     nokogiri (1.10.4)
       mini_portile2 (~> 2.4.0)
     rack (1.6.11)
