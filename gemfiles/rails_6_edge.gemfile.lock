@@ -1,9 +1,10 @@
 GIT
   remote: https://github.com/rails/rails
-  revision: eaff375de4c5e8a3373f7c5515f0008133a1d0e4
+  revision: 2ef9ecaf454f69db256da01001ad6cb0d5609072
   specs:
     actioncable (6.1.0.alpha)
       actionpack (= 6.1.0.alpha)
+      activesupport (= 6.1.0.alpha)
       nio4r (~> 2.0)
       websocket-driver (>= 0.6.1)
     actionmailbox (6.1.0.alpha)
@@ -17,6 +18,7 @@ GIT
       actionpack (= 6.1.0.alpha)
       actionview (= 6.1.0.alpha)
       activejob (= 6.1.0.alpha)
+      activesupport (= 6.1.0.alpha)
       mail (~> 2.5, >= 2.5.4)
       rails-dom-testing (~> 2.0)
     actionpack (6.1.0.alpha)
@@ -50,6 +52,7 @@ GIT
       actionpack (= 6.1.0.alpha)
       activejob (= 6.1.0.alpha)
       activerecord (= 6.1.0.alpha)
+      activesupport (= 6.1.0.alpha)
       marcel (~> 0.3.1)
     activesupport (6.1.0.alpha)
       concurrent-ruby (~> 1.0, >= 1.0.2)
