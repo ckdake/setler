@@ -26,5 +26,4 @@ Gem::Specification.new do |s|
   s.add_development_dependency('minitest')
   s.add_development_dependency('simplecov')
   s.add_development_dependency('appraisal')
-  s.add_development_dependency('overcommit', '0.50.0') # 10/16/2019: LOCKED DOWN
 end
