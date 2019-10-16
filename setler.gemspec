@@ -11,8 +11,6 @@ Gem::Specification.new do |s|
   s.summary     = %q{Settler lets you use the 'Feature Flags' pettern or add settings to models.}
   s.description = %q{Setler is a Gem that lets one easily implement the "Feature Flags" pattern, or add settings to individual models. This is a cleanroom implementation of what the 'rails-settings' gem does. It's been forked all over the place, and my favorite version of it doesn't have any tests and doesn't work with settings associated with models.}
 
-  s.rubyforge_project = "setler"
-
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
