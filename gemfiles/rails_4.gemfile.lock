@@ -70,7 +70,7 @@ GEM
     minitest (5.12.2)
     nokogiri (1.10.4)
       mini_portile2 (~> 2.4.0)
-    overcommit (0.51.0)
+    overcommit (0.50.0)
       childprocess (>= 0.6.3, < 4)
       iniparse (~> 1.4)
     rack (1.6.11)
@@ -125,7 +125,7 @@ PLATFORMS
 DEPENDENCIES
   appraisal
   minitest
-  overcommit
+  overcommit (= 0.50.0)
   rails (= 4.2.11.1)
   rake
   setler!
