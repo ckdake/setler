@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/rails/rails
-  revision: bc021203929b8d0d241061b253a4a636997abe62
+  revision: 22157365f6e29ab8b1fd75b7a15d9b570e98a3cd
   specs:
     actioncable (6.1.0.alpha)
       actionpack (= 6.1.0.alpha)
@@ -144,7 +144,7 @@ GEM
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
     sqlite3 (1.4.1)
-    thor (1.0.0)
+    thor (1.0.1)
     thread_safe (0.3.6)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
