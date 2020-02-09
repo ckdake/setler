@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/rails/rails
-  revision: 44cc2e7f1e4243a4a88b503e7c315a78e801d7cb
+  revision: 6708f3a5b7892ffd5412eb1c1d62ea53c404c4d1
   specs:
     actioncable (6.1.0.alpha)
       actionpack (= 6.1.0.alpha)
@@ -121,7 +121,7 @@ GEM
     nio4r (2.5.2)
     nokogiri (1.10.7)
       mini_portile2 (~> 2.4.0)
-    rack (2.1.2)
+    rack (2.2.1)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails-dom-testing (2.0.3)
