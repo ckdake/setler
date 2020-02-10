@@ -18,6 +18,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency('activerecord', '>=3.0.0')
   s.add_dependency('rails',        '>=3.0.0')
+  s.add_dependency('sprockets',    '3.7.2') # 10/16/2019: LOCKED DOWN
 
   s.add_development_dependency('rake')
   s.add_development_dependency('minitest')
