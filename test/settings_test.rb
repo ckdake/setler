@@ -179,7 +179,7 @@ class ::SettingsTest < Minitest::Test
     ::Preferences.create var: 'test',  value: 'preferences foo'
     ::Preferences.create var: 'test2', value: 'preferences bar'
 
-    refute_match ::Settings.all_settings, ::Preferences.all_settings
+    refute_equal ::Settings.all_settings, ::Preferences.all_settings
 
     assert_equal 'foo', ::Settings[:test]
     assert_equal 'bar', ::Settings[:test2]
