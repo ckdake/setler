@@ -28,9 +28,9 @@ module Setler
         super(method, *args, &block)
       else
         method_name = method.to_s
-        if method_name.ends_with?("=")
+        if method_name.end_with?("=")
           self[method_name[0..-2]] = args.first
-        elsif method_name.ends_with?("?")
+        elsif method_name.end_with?("?")
           self[method_name[0..-2]].present?
         else
           self[method_name]
