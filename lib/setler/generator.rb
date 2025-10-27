@@ -73,16 +73,16 @@ module Setler
       # Add version bracket for Rails 5+
       # Try to detect ActiveRecord version if available
       begin
-        require 'active_record' unless defined?(ActiveRecord)
+        require 'active_record' unless defined?(::ActiveRecord)
         
         if defined?(Rails) && Rails.version.to_f >= 5.0
-          "[#{ActiveRecord::VERSION::MAJOR}.#{ActiveRecord::VERSION::MINOR}]"
-        elsif defined?(ActiveRecord::VERSION) && ActiveRecord::VERSION::MAJOR >= 5
-          "[#{ActiveRecord::VERSION::MAJOR}.#{ActiveRecord::VERSION::MINOR}]"
+          "[#{::ActiveRecord::VERSION::MAJOR}.#{::ActiveRecord::VERSION::MINOR}]"
+        elsif defined?(::ActiveRecord::VERSION) && ::ActiveRecord::VERSION::MAJOR >= 5
+          "[#{::ActiveRecord::VERSION::MAJOR}.#{::ActiveRecord::VERSION::MINOR}]"
         else
           ""
         end
-      rescue LoadError
+      rescue LoadError, NameError
         # If ActiveRecord is not available, default to no version bracket
         # User can manually add it if needed
         ""

@@ -1,4 +1,3 @@
-#!/usr/bin/env ruby
 # Standalone generator for Setler - works without Rails
 # Usage: ruby -r setler/standalone_generator -e "Setler::StandaloneGenerator.run(ARGV)" <model_name>
 # Or: require 'setler/standalone_generator' and call Setler::StandaloneGenerator.run(['model_name'])
@@ -16,6 +15,4 @@ module Setler
 end
 
 # Run the generator if this file is executed directly
-if __FILE__ == $0
-  Setler::StandaloneGenerator.run(ARGV)
-end
+Setler::StandaloneGenerator.run(ARGV) if __FILE__ == $PROGRAM_NAME
