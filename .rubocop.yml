@@ -3,10 +3,10 @@ AllCops:
   NewCops: disable
   DisabledByDefault: true
   Exclude:
-    - 'vendor/**/*'
-    - 'gemfiles/**/vendor/**/*'
-    - 'lib/generators/**/templates/**/*'
-    - 'tmp/**/*'
+    - "vendor/**/*"
+    - "gemfiles/**/vendor/**/*"
+    - "lib/generators/**/templates/**/*"
+    - "tmp/**/*"
 
 plugins:
   - rubocop-rake
