@@ -1,0 +1,31 @@
+name: Appraisal tests
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [opened, synchronize]
+    branches:
+      - '*'
+
+jobs:
+  test:
+
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        ruby-version: ['2.6']
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: ${{ matrix.ruby-version }}
+        bundler-cache: true
+        bundler: 1.17.3
+    - name: Install appraisal gems
+      run: bundle exec appraisal install
+    - name: Run appraisal tests
+      run: bundle exec appraisal rake test
