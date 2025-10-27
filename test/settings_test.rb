@@ -192,4 +192,76 @@ class ::SettingsTest < Minitest::Test
 
     refute_equal ::Settings.defaults, ::Preferences.defaults
   end
+
+  def test_destroy_all_on_model_settings_should_not_affect_global_settings
+    # Create a global setting
+    ::Settings.global_setting = 'global_value'
+    
+    # Create a user with preferences
+    user = User.create name: 'user 1'
+    user.preferences.user_pref = 'user_value'
+    
+    # Verify both exist
+    assert_equal 'global_value', ::Settings.global_setting
+    assert_equal 'user_value', user.preferences.user_pref
+    
+    # Destroy all user preferences
+    user.preferences.destroy_all
+    
+    # Global settings should NOT be affected
+    assert_equal 'global_value', ::Settings.global_setting, "Global settings should not be destroyed by user.preferences.destroy_all"
+    
+    # User preferences should be destroyed
+    assert_nil user.preferences.user_pref, "User preferences should be destroyed"
+  end
+  
+  def test_destroy_all_on_global_settings_should_not_affect_model_settings
+    # Create a global setting
+    ::Settings.global_setting = 'global_value'
+    
+    # Create a user with preferences
+    user = User.create name: 'user 1'
+    user.preferences.user_pref = 'user_value'
+    
+    # Verify both exist
+    assert_equal 'global_value', ::Settings.global_setting
+    assert_equal 'user_value', user.preferences.user_pref
+    
+    # Destroy all global settings
+    ::Settings.destroy_all
+    
+    # User preferences should NOT be affected
+    assert_equal 'user_value', user.preferences.user_pref, "User preferences should not be destroyed by Settings.destroy_all"
+    
+    # Global settings should be destroyed
+    assert_nil ::Settings.global_setting, "Global settings should be destroyed"
+  end
+
+  def test_destroy_all_respects_scoping_across_tables
+    # Clean up first
+    ::Settings.delete_all
+    ::Preferences.delete_all
+    
+    # Create settings in both Settings and Preferences tables
+    ::Settings.global_setting = 'global_value'
+    ::Settings.another_global = 'another_global_value'
+    
+    ::Preferences.pref_setting = 'pref_value'
+    ::Preferences.another_pref = 'another_pref_value'
+    
+    # Create a user with scoped preferences
+    user = User.create name: 'user 1'
+    user.preferences.user_pref = 'user_value'
+    user.preferences.another_user_pref = 'another_user_value'
+    
+    # Destroy all user preferences using the scoped destroy_all
+    user.preferences.destroy_all
+    
+    # Settings should NOT be affected
+    assert_equal 2, ::Settings.count, "Settings count should remain 2"
+    
+    # Global preferences should NOT be affected, only user preferences
+    assert_equal 2, ::Preferences.where(thing_type: nil, thing_id: nil).count, "Global preferences should remain 2"
+    assert_equal 0, ::Preferences.where(thing_type: 'User', thing_id: user.id).count, "User preferences should be 0"
+  end
 end

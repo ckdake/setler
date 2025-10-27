@@ -73,6 +73,10 @@ module Setler
       end
     end
 
+    def self.destroy_all
+      thing_scoped.destroy_all
+    end
+
     def self.all_settings
       defaults.merge(Hash[thing_scoped.all.collect{ |s| [s.var, s.value] }])
     end
