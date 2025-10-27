@@ -108,13 +108,14 @@ module Setler
   end
 
   # Simple hash with indifferent access for non-Rails environments
+  # Allows accessing hash values with both string and symbol keys
   class IndifferentHash < Hash
     def [](key)
-      super(key.to_s)
+      super(convert_key(key))
     end
 
     def []=(key, value)
-      super(key.to_s, value)
+      super(convert_key(key), value)
     end
 
     def merge(other)
@@ -124,6 +125,12 @@ module Setler
     def merge!(other)
       other.each { |k, v| self[k] = v }
       self
+    end
+
+    private
+
+    def convert_key(key)
+      key.to_s
     end
   end
 end
