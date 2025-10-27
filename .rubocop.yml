@@ -3,6 +3,7 @@ AllCops:
   NewCops: disable
   DisabledByDefault: true
   Exclude:
+    - 'vendor/**/*'
     - 'gemfiles/**/vendor/**/*'
     - 'tmp/**/*'
 
