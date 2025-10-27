@@ -1,7 +1,11 @@
 require 'rubygems'
 
 require 'simplecov'
-SimpleCov.start 'rails'
+begin
+  SimpleCov.start 'rails'
+rescue LoadError
+  SimpleCov.start
+end
 
 require 'bundler'
 begin
@@ -12,7 +16,11 @@ rescue Bundler::BundlerError => e
   exit e.status_code
 end
 
-require 'rails'
+begin
+  require 'rails'
+rescue LoadError
+  # Rails not required for tests
+end
 require 'active_record'
 require 'minitest/autorun'
 

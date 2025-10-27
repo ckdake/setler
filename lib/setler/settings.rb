@@ -1,4 +1,9 @@
-require 'rails/version'
+# Require Rails version if available
+begin
+  require 'rails/version'
+rescue LoadError
+  # Rails not available - this is fine for non-Rails projects
+end
 
 module Setler
   class Settings < ActiveRecord::Base
@@ -6,14 +11,15 @@ module Setler
     self.abstract_class = true
 
     def self.defaults
-      @defaults ||= {}.with_indifferent_access
+      @defaults ||= default_hash
     end
 
     def self.defaults=(defaults)
-      @defaults = defaults.with_indifferent_access
+      @defaults = to_indifferent_hash(defaults)
     end
 
-    if Rails::VERSION::MAJOR == 3
+    # Rails 3 compatibility
+    if defined?(Rails) && Rails::VERSION::MAJOR == 3
       attr_accessible :var, :value
 
       def self.all
@@ -28,9 +34,9 @@ module Setler
         super(method, *args, &block)
       else
         method_name = method.to_s
-        if method_name.ends_with?("=")
+        if method_name.end_with?("=")
           self[method_name[0..-2]] = args.first
-        elsif method_name.ends_with?("?")
+        elsif method_name.end_with?("?")
           self[method_name[0..-2]].present?
         else
           self[method_name]
@@ -48,7 +54,7 @@ module Setler
       # thing_scoped.find_or_create_by_var(method_name[0..-2]) should work but doesnt for some reason
       # When @object is present, thing_scoped sets the where scope for the polymorphic association
       # but the find_or_create_by wasn't using the thing_type and thing_id
-      if Rails::VERSION::MAJOR == 3
+      if defined?(Rails) && Rails::VERSION::MAJOR == 3
         thing_scoped.find_or_create_by_var_and_thing_type_and_thing_id(
           var.to_s,
           @object.try(:class).try(:base_class).try(:to_s),
@@ -81,5 +87,43 @@ module Setler
       self.where(thing_type: nil, thing_id: nil)
     end
 
+    # Create a hash with indifferent access (works with or without Rails)
+    def self.default_hash
+      if defined?(ActiveSupport::HashWithIndifferentAccess)
+        {}.with_indifferent_access
+      else
+        IndifferentHash.new
+      end
+    end
+    private_class_method :default_hash
+
+    def self.to_indifferent_hash(hash)
+      if defined?(ActiveSupport::HashWithIndifferentAccess)
+        hash.with_indifferent_access
+      else
+        IndifferentHash.new.merge(hash)
+      end
+    end
+    private_class_method :to_indifferent_hash
+  end
+
+  # Simple hash with indifferent access for non-Rails environments
+  class IndifferentHash < Hash
+    def [](key)
+      super(key.to_s)
+    end
+
+    def []=(key, value)
+      super(key.to_s, value)
+    end
+
+    def merge(other)
+      dup.merge!(other)
+    end
+
+    def merge!(other)
+      other.each { |k, v| self[k] = v }
+      self
+    end
   end
 end
