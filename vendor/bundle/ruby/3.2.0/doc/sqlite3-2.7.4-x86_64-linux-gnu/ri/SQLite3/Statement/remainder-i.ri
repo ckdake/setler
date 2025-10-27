@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"remainder:ETI"!SQLite3::Statement#remainder;TI"R;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"NThis is any text that followed the first valid SQL statement in the text ;TI"Nwith which the statement was initialized. If there was no trailing text, ;TI"#this will be the empty string.;T:
+@fileI"lib/sqlite3/statement.rb;T:0@omit_headings_from_table_of_contents_below0F@I"SQLite3::Statement;TcRDoc::NormalClass0
