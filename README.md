@@ -6,7 +6,7 @@ Setler is a gem that lets you easily implement the "Feature Flags" pattern or ad
 [![Lint Status](https://github.com/ckdake/setler/actions/workflows/lint.yml/badge.svg?branch=main)](https://github.com/ckdake/setler/actions/workflows/lint.yml)
 [![Gem Version](https://img.shields.io/gem/v/setler.svg)](https://rubygems.org/gems/setler)
 [![Gem Downloads](https://img.shields.io/gem/dt/setler.svg)](https://rubygems.org/gems/setler)
-[![Ruby Versions](https://img.shields.io/badge/ruby-2.6.10--3.5-CC342D?logo=ruby&logoColor=white)](https://www.ruby-lang.org/en/downloads/)
+[![Required Ruby](https://img.shields.io/gem/ruby/setler.svg)](https://rubygems.org/gems/setler)
 [![License: MIT](https://img.shields.io/badge/license-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 While Setler enables you to create both app-level and model-level settings, they are two separate things and don't mix. For example, if you create defaults for the app, they won't appear as defaults for individual models.

@@ -17,6 +17,20 @@ Gem::Specification.new do |s|
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ["lib"]
 
+  supported_ruby_requirements = [
+    Gem::Requirement.new(["~> 2.6", ">= 2.6.10"]),
+    Gem::Requirement.new(["~> 2.7", ">= 2.7.8"]),
+    Gem::Requirement.new("~> 3.0"),
+    Gem::Requirement.new("~> 3.1"),
+    Gem::Requirement.new("~> 3.2"),
+    Gem::Requirement.new("~> 3.3"),
+    Gem::Requirement.new("~> 3.4"),
+    Gem::Requirement.new([">= 3.5.0.pre", "< 3.6"])
+  ].freeze
+
+  s.metadata['supported_ruby_requirements'] = supported_ruby_requirements.map(&:to_s).join(', ')
+  s.required_ruby_version = Gem::Requirement.new([">= 2.6.10"]) 
+
   s.add_dependency('activerecord', '>=3.0.0')
   s.add_dependency('rails',        '>=3.0.0')
   s.add_dependency('sprockets',    '3.7.2') # 10/16/2019: LOCKED DOWN
