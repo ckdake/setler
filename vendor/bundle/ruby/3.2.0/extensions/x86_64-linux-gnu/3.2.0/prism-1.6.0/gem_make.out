@@ -6,10 +6,10 @@ checking for whether -fvisibility=hidden is accepted as CFLAGS... yes
 creating Makefile
 
 current directory: /home/runner/work/setler/setler/vendor/bundle/ruby/3.2.0/gems/prism-1.6.0/ext/prism
-make DESTDIR\= sitearchdir\=./.gem.20251027-3435-pm553h sitelibdir\=./.gem.20251027-3435-pm553h clean
+make DESTDIR\= sitearchdir\=./.gem.20251027-5307-sm6hna sitelibdir\=./.gem.20251027-5307-sm6hna clean
 
 current directory: /home/runner/work/setler/setler/vendor/bundle/ruby/3.2.0/gems/prism-1.6.0/ext/prism
-make DESTDIR\= sitearchdir\=./.gem.20251027-3435-pm553h sitelibdir\=./.gem.20251027-3435-pm553h
+make DESTDIR\= sitearchdir\=./.gem.20251027-5307-sm6hna sitelibdir\=./.gem.20251027-5307-sm6hna
 compiling api_node.c
 compiling api_pack.c
 compiling ./../../src/diagnostic.c
@@ -37,8 +37,8 @@ compiling ./../../src/token_type.c
 linking shared-object prism/prism.so
 
 current directory: /home/runner/work/setler/setler/vendor/bundle/ruby/3.2.0/gems/prism-1.6.0/ext/prism
-make DESTDIR\= sitearchdir\=./.gem.20251027-3435-pm553h sitelibdir\=./.gem.20251027-3435-pm553h install
-/usr/bin/install -c -m 0755 prism.so ./.gem.20251027-3435-pm553h/prism
+make DESTDIR\= sitearchdir\=./.gem.20251027-5307-sm6hna sitelibdir\=./.gem.20251027-5307-sm6hna install
+/usr/bin/install -c -m 0755 prism.so ./.gem.20251027-5307-sm6hna/prism
 
 current directory: /home/runner/work/setler/setler/vendor/bundle/ruby/3.2.0/gems/prism-1.6.0/ext/prism
-make DESTDIR\= sitearchdir\=./.gem.20251027-3435-pm553h sitelibdir\=./.gem.20251027-3435-pm553h clean
+make DESTDIR\= sitearchdir\=./.gem.20251027-5307-sm6hna sitelibdir\=./.gem.20251027-5307-sm6hna clean

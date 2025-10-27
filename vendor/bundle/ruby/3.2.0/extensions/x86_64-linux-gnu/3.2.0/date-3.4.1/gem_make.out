@@ -6,10 +6,10 @@ checking for altzone in time.h with  -Werror... no
 creating Makefile
 
 current directory: /home/runner/work/setler/setler/vendor/bundle/ruby/3.2.0/gems/date-3.4.1/ext/date
-make DESTDIR\= sitearchdir\=./.gem.20251027-3435-o90i1s sitelibdir\=./.gem.20251027-3435-o90i1s clean
+make DESTDIR\= sitearchdir\=./.gem.20251027-5307-fwoxgm sitelibdir\=./.gem.20251027-5307-fwoxgm clean
 
 current directory: /home/runner/work/setler/setler/vendor/bundle/ruby/3.2.0/gems/date-3.4.1/ext/date
-make DESTDIR\= sitearchdir\=./.gem.20251027-3435-o90i1s sitelibdir\=./.gem.20251027-3435-o90i1s
+make DESTDIR\= sitearchdir\=./.gem.20251027-5307-fwoxgm sitelibdir\=./.gem.20251027-5307-fwoxgm
 compiling date_core.c
 compiling date_parse.c
 compiling date_strftime.c
@@ -17,8 +17,8 @@ compiling date_strptime.c
 linking shared-object date_core.so
 
 current directory: /home/runner/work/setler/setler/vendor/bundle/ruby/3.2.0/gems/date-3.4.1/ext/date
-make DESTDIR\= sitearchdir\=./.gem.20251027-3435-o90i1s sitelibdir\=./.gem.20251027-3435-o90i1s install
-/usr/bin/install -c -m 0755 date_core.so ./.gem.20251027-3435-o90i1s
+make DESTDIR\= sitearchdir\=./.gem.20251027-5307-fwoxgm sitelibdir\=./.gem.20251027-5307-fwoxgm install
+/usr/bin/install -c -m 0755 date_core.so ./.gem.20251027-5307-fwoxgm
 
 current directory: /home/runner/work/setler/setler/vendor/bundle/ruby/3.2.0/gems/date-3.4.1/ext/date
-make DESTDIR\= sitearchdir\=./.gem.20251027-3435-o90i1s sitelibdir\=./.gem.20251027-3435-o90i1s clean
+make DESTDIR\= sitearchdir\=./.gem.20251027-5307-fwoxgm sitelibdir\=./.gem.20251027-5307-fwoxgm clean

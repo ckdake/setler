@@ -4,16 +4,16 @@ checking for rb_ext_ractor_safe() in ruby.h... yes
 creating Makefile
 
 current directory: /home/runner/work/setler/setler/vendor/bundle/ruby/3.2.0/gems/erb-5.1.1/ext/erb/escape
-make DESTDIR\= sitearchdir\=./.gem.20251027-3435-qr7575 sitelibdir\=./.gem.20251027-3435-qr7575 clean
+make DESTDIR\= sitearchdir\=./.gem.20251027-5307-p0ej1l sitelibdir\=./.gem.20251027-5307-p0ej1l clean
 
 current directory: /home/runner/work/setler/setler/vendor/bundle/ruby/3.2.0/gems/erb-5.1.1/ext/erb/escape
-make DESTDIR\= sitearchdir\=./.gem.20251027-3435-qr7575 sitelibdir\=./.gem.20251027-3435-qr7575
+make DESTDIR\= sitearchdir\=./.gem.20251027-5307-p0ej1l sitelibdir\=./.gem.20251027-5307-p0ej1l
 compiling escape.c
 linking shared-object erb/escape.so
 
 current directory: /home/runner/work/setler/setler/vendor/bundle/ruby/3.2.0/gems/erb-5.1.1/ext/erb/escape
-make DESTDIR\= sitearchdir\=./.gem.20251027-3435-qr7575 sitelibdir\=./.gem.20251027-3435-qr7575 install
-/usr/bin/install -c -m 0755 escape.so ./.gem.20251027-3435-qr7575/erb
+make DESTDIR\= sitearchdir\=./.gem.20251027-5307-p0ej1l sitelibdir\=./.gem.20251027-5307-p0ej1l install
+/usr/bin/install -c -m 0755 escape.so ./.gem.20251027-5307-p0ej1l/erb
 
 current directory: /home/runner/work/setler/setler/vendor/bundle/ruby/3.2.0/gems/erb-5.1.1/ext/erb/escape
-make DESTDIR\= sitearchdir\=./.gem.20251027-3435-qr7575 sitelibdir\=./.gem.20251027-3435-qr7575 clean
+make DESTDIR\= sitearchdir\=./.gem.20251027-5307-p0ej1l sitelibdir\=./.gem.20251027-5307-p0ej1l clean

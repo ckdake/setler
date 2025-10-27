@@ -22,17 +22,17 @@ checking for RB_WARN_CATEGORY_DEPRECATED in ruby.h... yes
 creating Makefile
 
 current directory: /home/runner/work/setler/setler/vendor/bundle/ruby/3.2.0/gems/bigdecimal-3.3.1/ext/bigdecimal
-make DESTDIR\= sitearchdir\=./.gem.20251027-3435-hturxy sitelibdir\=./.gem.20251027-3435-hturxy clean
+make DESTDIR\= sitearchdir\=./.gem.20251027-5307-d3t62m sitelibdir\=./.gem.20251027-5307-d3t62m clean
 
 current directory: /home/runner/work/setler/setler/vendor/bundle/ruby/3.2.0/gems/bigdecimal-3.3.1/ext/bigdecimal
-make DESTDIR\= sitearchdir\=./.gem.20251027-3435-hturxy sitelibdir\=./.gem.20251027-3435-hturxy
+make DESTDIR\= sitearchdir\=./.gem.20251027-5307-d3t62m sitelibdir\=./.gem.20251027-5307-d3t62m
 compiling bigdecimal.c
 compiling missing.c
 linking shared-object bigdecimal.so
 
 current directory: /home/runner/work/setler/setler/vendor/bundle/ruby/3.2.0/gems/bigdecimal-3.3.1/ext/bigdecimal
-make DESTDIR\= sitearchdir\=./.gem.20251027-3435-hturxy sitelibdir\=./.gem.20251027-3435-hturxy install
-/usr/bin/install -c -m 0755 bigdecimal.so ./.gem.20251027-3435-hturxy
+make DESTDIR\= sitearchdir\=./.gem.20251027-5307-d3t62m sitelibdir\=./.gem.20251027-5307-d3t62m install
+/usr/bin/install -c -m 0755 bigdecimal.so ./.gem.20251027-5307-d3t62m
 
 current directory: /home/runner/work/setler/setler/vendor/bundle/ruby/3.2.0/gems/bigdecimal-3.3.1/ext/bigdecimal
-make DESTDIR\= sitearchdir\=./.gem.20251027-3435-hturxy sitelibdir\=./.gem.20251027-3435-hturxy clean
+make DESTDIR\= sitearchdir\=./.gem.20251027-5307-d3t62m sitelibdir\=./.gem.20251027-5307-d3t62m clean

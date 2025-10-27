@@ -10,16 +10,16 @@ checking for cpuid.h... yes
 creating Makefile
 
 current directory: /home/runner/work/setler/setler/vendor/bundle/ruby/3.2.0/gems/json-2.15.2/ext/json/ext/parser
-make DESTDIR\= sitearchdir\=./.gem.20251027-3435-mome7j sitelibdir\=./.gem.20251027-3435-mome7j clean
+make DESTDIR\= sitearchdir\=./.gem.20251027-5307-775ir sitelibdir\=./.gem.20251027-5307-775ir clean
 
 current directory: /home/runner/work/setler/setler/vendor/bundle/ruby/3.2.0/gems/json-2.15.2/ext/json/ext/parser
-make DESTDIR\= sitearchdir\=./.gem.20251027-3435-mome7j sitelibdir\=./.gem.20251027-3435-mome7j
+make DESTDIR\= sitearchdir\=./.gem.20251027-5307-775ir sitelibdir\=./.gem.20251027-5307-775ir
 compiling parser.c
 linking shared-object json/ext/parser.so
 
 current directory: /home/runner/work/setler/setler/vendor/bundle/ruby/3.2.0/gems/json-2.15.2/ext/json/ext/parser
-make DESTDIR\= sitearchdir\=./.gem.20251027-3435-mome7j sitelibdir\=./.gem.20251027-3435-mome7j install
-/usr/bin/install -c -m 0755 parser.so ./.gem.20251027-3435-mome7j/json/ext
+make DESTDIR\= sitearchdir\=./.gem.20251027-5307-775ir sitelibdir\=./.gem.20251027-5307-775ir install
+/usr/bin/install -c -m 0755 parser.so ./.gem.20251027-5307-775ir/json/ext
 
 current directory: /home/runner/work/setler/setler/vendor/bundle/ruby/3.2.0/gems/json-2.15.2/ext/json/ext/parser
-make DESTDIR\= sitearchdir\=./.gem.20251027-3435-mome7j sitelibdir\=./.gem.20251027-3435-mome7j clean
+make DESTDIR\= sitearchdir\=./.gem.20251027-5307-775ir sitelibdir\=./.gem.20251027-5307-775ir clean

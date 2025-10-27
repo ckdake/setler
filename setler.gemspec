@@ -26,5 +26,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency('simplecov')
   s.add_development_dependency('appraisal')
   s.add_development_dependency('rubocop', '~> 1.39')
-  s.add_development_dependency('rubocop-rake')
+  s.add_development_dependency('rubocop-rake', '~> 0.6')
 end
