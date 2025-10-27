@@ -192,4 +192,34 @@ class ::SettingsTest < Minitest::Test
 
     refute_equal ::Settings.defaults, ::Preferences.defaults
   end
+
+  def test_user_settings_destroy_all_does_not_destroy_global_settings
+    # Redefine User to use 'settings' instead of 'preferences' for this test
+    temp_user_class = Class.new(ActiveRecord::Base) do
+      self.table_name = 'users'
+      has_setler :settings
+    end
+
+    # Create global settings
+    ::Settings.global_setting = 'global_value'
+    global_count_before = ::Settings.count
+
+    # Create user with settings
+    user = temp_user_class.create name: 'test user'
+    user.settings.user_setting = 'user_value'
+    
+    # Verify both exist
+    assert_equal 'global_value', ::Settings.global_setting
+    assert_equal 'user_value', user.settings.user_setting
+
+    # Destroy all user settings
+    user.settings.destroy_all
+
+    # Global settings should survive
+    assert_equal 'global_value', ::Settings.global_setting
+    assert_equal global_count_before, ::Settings.where(thing_id: nil, thing_type: nil).count
+    
+    # User settings should be gone
+    assert_nil user.settings.user_setting
+  end
 end

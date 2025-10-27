@@ -11,6 +11,11 @@ module Setler
       self.base_class.where(thing_type: @object.class.base_class.to_s, thing_id: @object.id)
     end
 
+    # Override destroy_all to only destroy settings for the current object
+    def self.destroy_all
+      thing_scoped.destroy_all
+    end
+
     # do not use rails default to singularize because setler examples
     # user plural class names
     def self.settings_constantize(scopename)
