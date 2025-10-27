@@ -113,6 +113,20 @@ interpreters are only executed on compatible Rubies, and the Ruby 3.5 job is mar
 stabilizes. Ruby 2.6 runs only the Rails 4 appraisal (with Bundler 1.17.3) because newer Bundler releases require Ruby
 2.7+, while the Ruby 2.7 job covers Rails 5 and 6 using Bundler 2.4.x and the Ruby 3.x jobs use Bundler 2.5.x.
 
+## AI Assistance
+
+We welcome responsible AI-assisted contributions. Human authors remain accountable for every line added to the
+repository—even when an agent drafts the code. Before opening a pull request, confirm that:
+
+- Tests are added or expanded to exercise the behavior you changed.
+- `bundle exec rubocop --format progress` passes without disabling cops.
+- Relevant Appraisal suites finish cleanly locally or in CI, and any failures are addressed.
+- Documentation (including this README) reflects behavior changes when applicable.
+- Your contributions are compatabile with the MIT license.
+
+Agents collaborating on this repository follow the automation-focused directions in `AGENTS.md`. Refer to that file
+when coordinating with AI tooling.
+
 ### Linting
 
 Automated linting runs in CI and locally with `bundle exec rubocop --format progress` (Lint department only by default).
