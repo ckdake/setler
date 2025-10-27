@@ -22,7 +22,7 @@ jobs:
         include:
           - ruby-version: "2.6.10"
             bundler: "1.17.3"
-            appraisals: "rails-4 rails-5 rails-6-edge"
+            appraisals: "rails-4"
             experimental: false
           - ruby-version: "2.7.8"
             bundler: "2.4.22"

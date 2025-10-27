@@ -107,7 +107,11 @@ bundle _2.4.22_ exec appraisal rails-6-edge bundle install
 
 To run the Rails 4 appraisal locally, switch to Ruby 2.6 and use Bundler 1.17.3, for example: `bundle _1.17.3_ exec appraisal rails-4 bundle install` followed by `bundle _1.17.3_ exec appraisal rails-4 rake test`.
 
-Our GitHub Actions workflow exercises the library against Rails 4.2, 5.2, and 6.1 across the latest patch releases of Ruby 2.6, 2.7, 3.0, 3.1, 3.2, 3.3, 3.4, and the Ruby 3.5 preview. Rails versions that are unsupported on newer interpreters are only executed on compatible Rubies, and the Ruby 3.5 job is marked experimental while the release stabilizes. The matrix uses Bundler 1.17.3 for the Ruby 2.6/Rails 4 job, Bundler 2.4.x for Ruby 2.7, and Bundler 2.5.x for Ruby 3.x.
+Our GitHub Actions workflow exercises the library against Rails 4.2, 5.2, and 6.1 across the latest patch releases of
+Ruby 2.6, 2.7, 3.0, 3.1, 3.2, 3.3, 3.4, and the Ruby 3.5 preview. Rails versions that are unsupported on newer
+interpreters are only executed on compatible Rubies, and the Ruby 3.5 job is marked experimental while the release
+stabilizes. Ruby 2.6 runs only the Rails 4 appraisal (with Bundler 1.17.3) because newer Bundler releases require Ruby
+2.7+, while the Ruby 2.7 job covers Rails 5 and 6 using Bundler 2.4.x and the Ruby 3.x jobs use Bundler 2.5.x.
 
 ### Linting
 
