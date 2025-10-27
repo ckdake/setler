@@ -1,0 +1,73 @@
+name: Tests
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+  schedule:
+    - cron: '0 9 * * 1'
+
+jobs:
+  test:
+    name: Ruby ${{ matrix.ruby-version }}
+    runs-on: ubuntu-latest
+    continue-on-error: ${{ matrix.experimental }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - ruby-version: '2.6.10'
+            appraisals: "rails-4 rails-5 rails-6-edge"
+            experimental: false
+          - ruby-version: '2.7.8'
+            appraisals: "rails-5 rails-6-edge"
+            experimental: false
+          - ruby-version: '3.0.7'
+            appraisals: "rails-6-edge"
+            experimental: false
+          - ruby-version: '3.1.7'
+            appraisals: "rails-6-edge"
+            experimental: false
+          - ruby-version: '3.2.9'
+            appraisals: "rails-6-edge"
+            experimental: false
+          - ruby-version: '3.3.9'
+            appraisals: "rails-6-edge"
+            experimental: false
+          - ruby-version: '3.4.7'
+            appraisals: "rails-6-edge"
+            experimental: false
+          - ruby-version: '3.5.0-preview1'
+            appraisals: "rails-6-edge"
+            experimental: true
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: ${{ matrix.ruby-version }}
+        bundler: 2.5.10
+        bundler-cache: true
+    - name: Install appraisal gems
+      shell: bash
+      run: |
+        set -euo pipefail
+        APPRAISALS="${{ matrix.appraisals }}"
+        for appraisal in $APPRAISALS; do
+          echo "Installing gems for ${appraisal}"
+          bundle exec appraisal "${appraisal}" bundle install
+        done
+    - name: Run appraisal tests
+      shell: bash
+      run: |
+        set -euo pipefail
+        APPRAISALS="${{ matrix.appraisals }}"
+        for appraisal in $APPRAISALS; do
+          echo "Running tests for ${appraisal}"
+          bundle exec appraisal "${appraisal}" rake test
+        done

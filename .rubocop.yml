@@ -1,0 +1,10 @@
+AllCops:
+  TargetRubyVersion: 2.6
+  NewCops: disable
+  DisabledByDefault: true
+  Exclude:
+    - 'gemfiles/**/vendor/**/*'
+    - 'tmp/**/*'
+
+Lint:
+  Enabled: true

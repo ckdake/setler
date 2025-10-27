@@ -143,4 +143,4 @@ DEPENDENCIES
   sqlite3 (= 1.3.13)
 
 BUNDLED WITH
-   1.17.3
+  2.5.10

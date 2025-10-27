@@ -6,16 +6,30 @@
 	"image": "mcr.microsoft.com/devcontainers/base:bullseye",
 	"features": {
 		"ghcr.io/devcontainers/features/ruby:1": {
-			"version": "2.6.5"
+			"version": "3.4.7"
 		},
 		"ghcr.io/devcontainers/features/github-cli:1": {}
 	},
-	"postCreateCommand": "gem install bundler -v 1.17.3 --no-document && bundle _1.17.3_ install && bundle _1.17.3_ exec appraisal install",
+	"postCreateCommand": "gem install bundler -v 2.5.10 --no-document && bundle _2.5.10_ install",
 	"customizations": {
 		"vscode": {
 			"extensions": [
-				"shopify.ruby-lsp"
-			]
+				"shopify.ruby-lsp",
+				"redhat.vscode-yaml",
+				"DavidAnson.vscode-markdownlint"
+			],
+			"settings": {
+				"editor.formatOnSave": true,
+				"rubyLsp": {
+					"rubyVersionManager": "none"
+				},
+				"[ruby]": {
+					"editor.defaultFormatter": "Shopify.ruby-lsp"
+				},
+				"[markdown]": {
+					"editor.defaultFormatter": "vscode.markdown-language-features"
+				}
+			}
 		}
 	}
 }

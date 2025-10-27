@@ -14,11 +14,6 @@ Rake::TestTask.new(:test) do |test|
   test.verbose = true
 end
 
-require 'bundler/gem_tasks'
-
-require 'rake'
-require 'appraisal'
-
 desc 'Default'
 task :default do
   if ENV['BUNDLE_GEMFILE'] =~ /gemfiles/
