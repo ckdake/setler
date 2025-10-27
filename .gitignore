@@ -4,3 +4,4 @@ coverage.data
 .bundle
 Gemfile.lock
 pkg/*
+vendor/bundle

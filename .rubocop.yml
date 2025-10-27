@@ -5,6 +5,8 @@ AllCops:
   Exclude:
     - 'gemfiles/**/vendor/**/*'
     - 'tmp/**/*'
+    - 'vendor/**/*'
+    - 'lib/generators/**/templates/**/*'
 
 Lint:
   Enabled: true
