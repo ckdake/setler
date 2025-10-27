@@ -1,0 +1,21 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/ruby
+{
+	"name": "Setler",
+	// Base dev container image docs: https://containers.dev/templates
+	"image": "mcr.microsoft.com/devcontainers/base:bullseye",
+	"features": {
+		"ghcr.io/devcontainers/features/ruby:1": {
+			"version": "2.6.5"
+		},
+		"ghcr.io/devcontainers/features/github-cli:1": {}
+	},
+	"postCreateCommand": "gem install bundler -v 1.17.3 --no-document && bundle _1.17.3_ install && bundle _1.17.3_ exec appraisal install",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"shopify.ruby-lsp"
+			]
+		}
+	}
+}

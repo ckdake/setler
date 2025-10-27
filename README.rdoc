@@ -2,8 +2,11 @@
 
 Setler is a Gem that lets one easily implement the "Feature Flags" pattern, or add settings to individual models. This is a cleanroom implementation of what the 'rails-settings' gem does. It's been forked all over the place, and my favorite version of it doesn't have any tests and doesn't work with settings associated with models.
 
-{<img src="https://travis-ci.org/ckdake/setler.svg?branch=master" alt="Build Status" />}[https://travis-ci.org/ckdake/setler]
-{<img src="https://badge.fury.io/rb/setler.svg" alt="Gem Version" />}[http://badge.fury.io/rb/setler]
+{<img src="https://github.com/ckdake/setler/actions/workflows/ci.yml/badge.svg?branch=master" alt="CI Status" />}[https://github.com/ckdake/setler/actions/workflows/ci.yml]
+{<img src="https://img.shields.io/gem/v/setler.svg" alt="Gem Version" />}[https://rubygems.org/gems/setler]
+{<img src="https://img.shields.io/gem/dt/setler.svg" alt="Gem Downloads" />}[https://rubygems.org/gems/setler]
+{<img src="https://img.shields.io/badge/ruby-2.6.5-CC342D?logo=ruby&logoColor=white" alt="Ruby 2.6.5" />}[https://www.ruby-lang.org/en/downloads/]
+{<img src="https://img.shields.io/badge/license-MIT-yellow.svg" alt="License: MIT" />}[https://opensource.org/licenses/MIT]
 
 While Setler enables you to create both app-level and model-level settings, they are two separate things and don't mix. For example, if you create defaults for the app, they won't appear as defaults for individual models.
 
@@ -71,14 +74,18 @@ TODO: And look em up:
 
   User.with_settings_for('favorite_meat') # => scope of users with the favorite_meat setting
 
+== Development Environment
+
+Setler includes a ready-to-use Dev Container that provisions Ruby 2.6.5, Bundler 1.17.3, and the Appraisal matrix automatically. When using VS Code with the Dev Containers extension (or GitHub Codespaces), choose *Reopen in Container* and the setup scripts will run `bundle _1.17.3_ install` followed by `bundle _1.17.3_ exec appraisal install` so the test suite is ready immediately. Developing locally? Be sure to use the Ruby version pinned in `.ruby-version` and install the matching Bundler version before running the same commands.
+
 == Gem Development
 
 Getting started is pretty straightforward:
 
   1. Check out the code:  `git clone git://github.com/ckdake/setler.git`
-  2. Bundle install:  `bundle install`
-  3. Run:  `appraisal install`  to generate the appraisal's gemfiles.
-  4. Run the tests for all supported releases in Appraisals file and make sure they all pass and code coverage is still the same:  `appraisal rake test`
+  2. Bundle install:  `bundle _1.17.3_ install`
+  3. Run:  `bundle _1.17.3_ exec appraisal install`  to generate the appraisal's gemfiles.
+  4. Run the tests for all supported releases in Appraisals file and make sure they all pass and code coverage is still the same:  `bundle _1.17.3_ exec appraisal rake test`
 
 If you'd like to contribute code, make your changes and submit a pull request that includes appropriate tests
 

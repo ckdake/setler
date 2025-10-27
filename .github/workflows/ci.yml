@@ -1,21 +1,26 @@
-name: Appraisal tests
+name: CI
 
 on:
   push:
     branches:
+      - master
       - main
   pull_request:
-    types: [opened, synchronize]
     branches:
-      - '*'
+      - master
+      - main
+  workflow_dispatch:
+  schedule:
+    - cron: '0 9 * * 1'
 
 jobs:
   test:
-
+    name: Ruby ${{ matrix.ruby-version }}
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
-        ruby-version: ['2.6']
+        ruby-version: ['2.6.5']
 
     steps:
     - uses: actions/checkout@v4
