@@ -65,7 +65,7 @@ module Setler
 
     def self.destroy(var_name)
       var_name = var_name.to_s
-      if setting = self.find_by_var(var_name)
+  if (setting = self.find_by_var(var_name))
         setting.destroy
         true
       else

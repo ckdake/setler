@@ -5,7 +5,11 @@ AllCops:
   Exclude:
     - 'vendor/**/*'
     - 'gemfiles/**/vendor/**/*'
+    - 'lib/generators/**/templates/**/*'
     - 'tmp/**/*'
+
+plugins:
+  - rubocop-rake
 
 Lint:
   Enabled: true
