@@ -5,10 +5,12 @@ end
 
 appraise "rails-5" do
   gem "rails", "5.2.3"
-  gem 'sqlite3'
+  gem 'sqlite3', "1.5.4"
+  gem 'mimemagic', "0.3.10"
 end
 
 appraise "rails-6-edge" do
-  gem 'rails', git: 'https://github.com/rails/rails'
-  gem 'sqlite3'
+  gem 'rails', "6.1.7.9"
+  gem 'sqlite3', "1.5.4"
+  gem 'concurrent-ruby', '1.3.4'
 end

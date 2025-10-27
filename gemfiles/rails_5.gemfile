@@ -3,6 +3,7 @@
 source "https://rubygems.org"
 
 gem "rails", "5.2.3"
-gem "sqlite3"
+gem "sqlite3", "1.5.4"
+gem "mimemagic", "0.3.10"
 
 gemspec path: "../"
