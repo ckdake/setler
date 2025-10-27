@@ -10,7 +10,7 @@
 		},
 		"ghcr.io/devcontainers/features/github-cli:1": {}
 	},
-	"postCreateCommand": "gem install bundler -v 2.5.10 --no-document && bundle _2.5.10_ install",
+	"postCreateCommand": "gem install bundler -v 2.4.22 --no-document && bundle _2.4.22_ install",
 	"customizations": {
 		"vscode": {
 			"extensions": [

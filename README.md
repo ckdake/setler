@@ -94,17 +94,20 @@ User.with_settings_for('favorite_meat') # => scope of users with the favorite_me
 
 ## Development Environment
 
-Setler includes a ready-to-use Dev Container that provisions Ruby 3.4.7, Bundler 2.5.10, and installs the Appraisal matrix automatically. When using VS Code with the Dev Containers extension (or GitHub Codespaces), choose **Reopen in Container** and the setup scripts will run `bundle _2.5.10_ install` followed by `bundle _2.5.10_ exec appraisal install` so the test suite is ready immediately. The container also enables *format on save* with Ruby LSP, YAML, and Markdown tooling preinstalled for a consistent editing experience.
+Setler includes a ready-to-use Dev Container that provisions Ruby 3.4.7 alongside Bundler 2.4.22. When using VS Code with the Dev Containers extension (or GitHub Codespaces), choose **Reopen in Container** and the setup scripts will run `bundle _2.4.22_ install` so the gem dependencies are available immediately. The container also enables *format on save* with Ruby LSP, YAML, and Markdown tooling preinstalled for a consistent editing experience. Rails 4 support relies on Bundler 1.17.3 and Ruby 2.6; our CI matrix exercises that combination, and you can mirror it locally with a Ruby 2.6 toolchain if needed.
 
 Developing locally? Install the Ruby version pinned in `.ruby-version` and the matching Bundler release, then run:
 
 ```bash
-gem install bundler -v 2.5.10
-bundle _2.5.10_ install
-bundle _2.5.10_ exec appraisal install
+gem install bundler -v 2.4.22
+bundle _2.4.22_ install
+bundle _2.4.22_ exec appraisal rails-5 bundle install
+bundle _2.4.22_ exec appraisal rails-6-edge bundle install
 ```
 
-Our GitHub Actions workflow exercises the library against Rails 4.2, 5.2, and 6.1 across the latest patch releases of Ruby 2.6, 2.7, 3.0, 3.1, 3.2, 3.3, 3.4, and the Ruby 3.5 preview. Rails versions that are unsupported on newer interpreters are only executed on compatible Rubies, and the Ruby 3.5 job is marked experimental while the release stabilizes.
+To run the Rails 4 appraisal locally, switch to Ruby 2.6 and use Bundler 1.17.3, for example: `bundle _1.17.3_ exec appraisal rails-4 bundle install` followed by `bundle _1.17.3_ exec appraisal rails-4 rake test`.
+
+Our GitHub Actions workflow exercises the library against Rails 4.2, 5.2, and 6.1 across the latest patch releases of Ruby 2.6, 2.7, 3.0, 3.1, 3.2, 3.3, 3.4, and the Ruby 3.5 preview. Rails versions that are unsupported on newer interpreters are only executed on compatible Rubies, and the Ruby 3.5 job is marked experimental while the release stabilizes. The matrix uses Bundler 1.17.3 for the Ruby 2.6/Rails 4 job, Bundler 2.4.x for Ruby 2.7, and Bundler 2.5.x for Ruby 3.x.
 
 ### Linting
 
@@ -115,10 +118,22 @@ Automated linting runs in CI and locally with `bundle exec rubocop --format prog
 Getting started is pretty straightforward:
 
 1. Check out the code: `git clone git://github.com/ckdake/setler.git`
-2. Install dependencies: `bundle _2.5.10_ install`
-3. Generate appraisal gemfiles: `bundle _2.5.10_ exec appraisal install`
-4. Run the tests for all supported releases listed in `Appraisals`: `bundle _2.5.10_ exec appraisal rake test`
-5. Run the linters described above before opening a pull request.
+1. Install dependencies: `bundle _2.4.22_ install`
+1. Install the per-Rails dependencies:
+
+  ```bash
+  bundle _2.4.22_ exec appraisal rails-5 bundle install
+  bundle _2.4.22_ exec appraisal rails-6-edge bundle install
+  ```
+
+1. Run the tests for the supported Rails versions you just installed:
+
+  ```bash
+  bundle _2.4.22_ exec appraisal rails-5 rake test
+  bundle _2.4.22_ exec appraisal rails-6-edge rake test
+  ```
+
+1. Run the linters described above before opening a pull request.
 
 If you'd like to contribute code, make your changes and submit a pull request that includes appropriate tests.
 

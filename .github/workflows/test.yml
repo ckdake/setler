@@ -9,7 +9,7 @@ on:
       - main
   workflow_dispatch:
   schedule:
-    - cron: '0 9 * * 1'
+    - cron: "0 9 * * 1"
 
 jobs:
   test:
@@ -20,54 +20,74 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - ruby-version: '2.6.10'
+          - ruby-version: "2.6.10"
+            bundler: "1.17.3"
             appraisals: "rails-4 rails-5 rails-6-edge"
             experimental: false
-          - ruby-version: '2.7.8'
+          - ruby-version: "2.7.8"
+            bundler: "2.4.22"
             appraisals: "rails-5 rails-6-edge"
             experimental: false
-          - ruby-version: '3.0.7'
+          - ruby-version: "3.0.7"
+            bundler: "2.5.10"
             appraisals: "rails-6-edge"
             experimental: false
-          - ruby-version: '3.1.7'
+          - ruby-version: "3.1.7"
+            bundler: "2.5.10"
             appraisals: "rails-6-edge"
             experimental: false
-          - ruby-version: '3.2.9'
+          - ruby-version: "3.2.9"
+            bundler: "2.5.10"
             appraisals: "rails-6-edge"
             experimental: false
-          - ruby-version: '3.3.9'
+          - ruby-version: "3.3.9"
+            bundler: "2.5.10"
             appraisals: "rails-6-edge"
             experimental: false
-          - ruby-version: '3.4.7'
+          - ruby-version: "3.4.7"
+            bundler: "2.5.10"
             appraisals: "rails-6-edge"
             experimental: false
-          - ruby-version: '3.5.0-preview1'
+          - ruby-version: "3.5.0-preview1"
+            bundler: "2.5.10"
             appraisals: "rails-6-edge"
             experimental: true
 
     steps:
-    - uses: actions/checkout@v4
-    - name: Set up Ruby
-      uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: ${{ matrix.ruby-version }}
-        bundler: 2.5.10
-        bundler-cache: true
-    - name: Install appraisal gems
-      shell: bash
-      run: |
-        set -euo pipefail
-        APPRAISALS="${{ matrix.appraisals }}"
-        for appraisal in $APPRAISALS; do
-          echo "Installing gems for ${appraisal}"
-          bundle exec appraisal "${appraisal}" bundle install
-        done
-    - name: Run appraisal tests
-      shell: bash
-      run: |
-        set -euo pipefail
-        APPRAISALS="${{ matrix.appraisals }}"
-        for appraisal in $APPRAISALS; do
-          echo "Running tests for ${appraisal}"
-          bundle exec appraisal "${appraisal}" rake test
-        done
+      - uses: actions/checkout@v4
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby-version }}
+          bundler: ${{ matrix.bundler }}
+          bundler-cache: true
+      - name: Install appraisal gems
+        shell: bash
+        run: |
+          set -euo pipefail
+          APPRAISALS="${{ matrix.appraisals }}"
+          DEFAULT_BUNDLER="${{ matrix.bundler }}"
+          for appraisal in $APPRAISALS; do
+            if [ "$appraisal" = "rails-4" ]; then
+              BUNDLER_VERSION="1.17.3"
+            else
+              BUNDLER_VERSION="$DEFAULT_BUNDLER"
+            fi
+            echo "Installing gems for ${appraisal} with bundler ${BUNDLER_VERSION}"
+            bundle _${BUNDLER_VERSION}_ exec appraisal "${appraisal}" bundle install
+          done
+      - name: Run appraisal tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          APPRAISALS="${{ matrix.appraisals }}"
+          DEFAULT_BUNDLER="${{ matrix.bundler }}"
+          for appraisal in $APPRAISALS; do
+            if [ "$appraisal" = "rails-4" ]; then
+              BUNDLER_VERSION="1.17.3"
+            else
+              BUNDLER_VERSION="$DEFAULT_BUNDLER"
+            fi
+            echo "Running tests for ${appraisal} with bundler ${BUNDLER_VERSION}"
+            bundle _${BUNDLER_VERSION}_ exec appraisal "${appraisal}" rake test
+          done
