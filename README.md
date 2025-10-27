@@ -50,6 +50,23 @@ Featureflags.bacon_dispenser_enabled # true
 Settings[:allowed_meats].include?('bacon')  # true
 ```
 
+Query settings with predicate methods:
+
+```ruby
+# Predicate methods return the truthiness of the value using Ruby's .present? method
+Settings.bacon_dispenser_enabled = true
+Settings.bacon_dispenser_enabled?  # true
+
+Settings.disabled_feature = false
+Settings.disabled_feature?  # false
+
+Settings.my_list = [1, 2, 3]
+Settings.my_list?  # true
+
+Settings.empty_list = []
+Settings.empty_list?  # false (empty arrays are not present)
+```
+
 Destroy them:
 
 ```ruby
