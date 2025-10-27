@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+
+# Add lib to load path
+$LOAD_PATH.unshift File.expand_path('../lib', __dir__)
+
+require 'setler/standalone_generator'
+
+Setler::StandaloneGenerator.run(ARGV)

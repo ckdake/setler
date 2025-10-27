@@ -21,8 +21,23 @@ gem "setler"
 
 Generate the model:
 
+**For Rails projects:**
+
 ```bash
 rails g setler <model_name>
+```
+
+**For non-Rails projects (Sinatra, Hanami, etc.) that use ActiveRecord:**
+
+```bash
+# Using the setler command-line tool
+setler <model_name>
+
+# Or using rake task
+rake setler:generate MODEL=<model_name>
+
+# Or programmatically
+ruby -r setler/standalone_generator -e "Setler::StandaloneGenerator.run(['<model_name>'])"
 ```
 
 Run the migration:
