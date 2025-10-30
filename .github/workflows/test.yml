@@ -26,32 +26,32 @@ jobs:
             experimental: false
           - ruby-version: "2.7.8"
             bundler: "2.4.22"
-            appraisals: "rails-5 rails-6-edge"
+            appraisals: "rails-5"
             experimental: false
           - ruby-version: "3.0.7"
             bundler: "2.5.10"
-            appraisals: "rails-6-edge"
+            appraisals: "rails-6"
             experimental: false
           - ruby-version: "3.1.7"
             bundler: "2.5.10"
-            appraisals: "rails-6-edge"
+            appraisals: "rails-6 rails-7"
             experimental: false
           - ruby-version: "3.2.9"
             bundler: "2.5.10"
-            appraisals: "rails-6-edge"
+            appraisals: "rails-6 rails-7 rails-8 rails-edge"
             experimental: false
           - ruby-version: "3.3.9"
             bundler: "2.5.10"
-            appraisals: "rails-6-edge"
+            appraisals: "rails-6 rails-7 rails-8 rails-edge"
             experimental: false
           - ruby-version: "3.4.7"
             bundler: "2.5.10"
-            appraisals: "rails-6-edge"
+            appraisals: "rails-7 rails-8 rails-edge"
             experimental: false
           - ruby-version: "3.5.0-preview1"
             bundler: "2.5.10"
-            appraisals: "rails-6-edge"
-            experimental: true
+            appraisals: "rails-7 rails-8 rails-edge"
+            experimental: false
     steps:
       - uses: actions/checkout@v5
       - name: Set up Ruby
