@@ -120,6 +120,8 @@ GEM
       racc (~> 1.4)
     nokogiri (1.18.10-x86_64-darwin)
       racc (~> 1.4)
+    nokogiri (1.18.10-x86_64-linux-gnu)
+      racc (~> 1.4)
     panolint (0.1.6)
       brakeman (>= 4.8, < 6.0)
       rubocop (>= 0.83, < 2.0)
@@ -224,10 +226,6 @@ GEM
       sprockets (>= 3.0.0)
     sqlite3 (1.5.4)
       mini_portile2 (~> 2.8.0)
-    sqlite3 (1.5.4-arm64-darwin)
-    sqlite3 (1.5.4-x86-linux)
-    sqlite3 (1.5.4-x86_64-darwin)
-    sqlite3 (1.5.4-x86_64-linux)
     thor (1.4.0)
     timeout (0.4.4)
     tzinfo (2.0.6)
@@ -263,4 +261,4 @@ DEPENDENCIES
   sqlite3 (= 1.5.4)
 
 BUNDLED WITH
-   2.5.10
+   2.4.22
