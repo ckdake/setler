@@ -5,3 +5,4 @@ coverage.data
 Gemfile.lock
 pkg/*
 vendor/bundle
+# Clean build artifacts
