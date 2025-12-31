@@ -18,15 +18,15 @@ end
 
 appraise "rails-7" do
   gem "rails", "~> 7.2"
-  gem "sqlite3", "1.5.4"
+  gem "sqlite3"
 end
 
 appraise "rails-8" do
   gem "rails", "~> 8.1"
-  gem "sqlite3", "1.5.4"
+  gem "sqlite3"
 end
 
 appraise "rails-edge" do
   gem "rails", git: "https://github.com/rails/rails"
-  gem "sqlite3", "1.5.4"
+  gem "sqlite3"
 end
