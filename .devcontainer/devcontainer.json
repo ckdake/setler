@@ -5,7 +5,7 @@
 	// Base dev container image docs: https://containers.dev/templates
 	"image": "mcr.microsoft.com/devcontainers/base:bullseye",
 	"features": {
-		"ghcr.io/devcontainers/features/ruby:1": {
+		"ghcr.io/devcontainers/features/ruby:2": {
 			"version": "3.4.7"
 		},
 		"ghcr.io/devcontainers/features/github-cli:1": {}
